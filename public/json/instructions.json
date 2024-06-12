@@ -1,0 +1,16 @@
+{
+    "lexicon": {
+      "formal": true, 
+      "target_audience": "femmes entrepreneures",
+      "avoid_words": ["trop", "très", "beaucoup"] 
+    },
+    "response_style": {
+      "positive_tone": true, 
+      "max_response_length": 400,  
+      "use_emojis": true,  
+      "use_examples": true
+    },
+    "knowledge_base": [ 
+      "entrepreneuriat", "économie sociale", "femme entrepreneur", "développement durable"
+    ]
+  }
