@@ -1,0 +1,520 @@
+
+{
+	"examples": [
+		{
+			"question": "Quelle était la date du dernier évènement Startop?",
+			"answer": "Le dernier évènement de Startop est [Nom du dernier évènement avant la date réelle], le [Date du dernier évènement avant la date réelle]."
+		},
+		{
+			"question": "Quand a eu lieu le dernier évènement?",
+			"answer": "Le dernier évènement de Startop est [Nom du dernier évènement avant la date réelle], le [Date du dernier évènement avant la date réelle]."
+		},
+		{
+			"question": "Quelle est la date du prochain évènement Startop?",
+			"answer": "Le prochain évènement de Startop est [Nom du prochain évènement avant la date réelle], le [Date du prochain évènement avant la date réelle]."
+		},
+		{
+			"question": "Quand aura lieu le prochain évènement?",
+			"answer": "Le prochain évènement de Startop est [Nom du prochain évènement avant la date réelle], le [Date du prochain évènement avant la date réelle]."
+		},
+		{
+			"question": "Parlez-moi des évènements Startop en 2023.",
+			"answer": "En 2023, Startop a organisé plusieurs évènements, notamment [Liste des évènements, mentionnant la date des évènements qui ont eu lieu en 2023]."
+		}
+	],
+	"à propos": {
+		"mission": "Startop® a pour mission de sensibiliser et d’accompagner les femmes vers l’entrepreneuriat et l’économie sociale.",
+		"vision": "LA PARITÉ ENTREPRENEURIALE Accroitre les entreprises à propriété féminine. L’ENTREPRENEURIAT DURABLE Réduire le décrochage entrepreneurial chez les femmes et créer des entreprises pérennes. LES FEMMES D’INFLUENCE Bâtir un écosystème par et pour des entrepreneures. L’INCLUSION ET LA DIVERSITÉ Contribuer à rendre l’économie sociale plus inclusive et diversifiée.",
+		"valeurs_fondamental": [
+			"L’ÉPANOUISSEMENT Entreprendre ton projet avec plaisir",
+			"L’INNOVATION Concevoir de nouveaux modèles d’affaires",
+			"LA SAGESSE Faire preuve de bon sens et de bienveillance"
+		],
+		"chronologie": [
+			{
+				"date": "2022-03-27",
+				"longue-date": "27 mars 2022",
+				"event": "Inauguration de l'OBNL Startop®",
+				"description": "Notre histoire a commencé le 2022-01-27 quand 3 visionnaires ayant le désir d’apporter des innovations sociales pour contribuer à l’essor de l’entrepreneuriat féminin ont procédé à l’incorporation de notre organisme. Par la suite, nous avons choisi la symbolique journée du 8 mars, marquant le droit des femmes pour inaugurer officiellement le tout premier incubateur de communautés féminines dédié à l’économie sociale et destiné aux femmes de la diversité."
+			},
+			{
+				"date": "2023-01-27",
+				"longue-date": "27 janvier 2023",
+				"event": "1ère cohorte en économie sociale",
+				"description": "Une cérémonie spéciale a marqué le passage à l’économie sociale de dix organismes dirigés par trente entrepreneures issues de divers horizons ethniques. Cette réunion exclusive a réuni 80 participants, y compris des acteurs clés de l’écosystème entrepreneurial. Lors de l’évènement, quatre bourses d’une valeur de 1000 $ chacune ont été attribuées aux organisations qui se sont distinguées par leur engagement envers l’économie sociale."
+			},
+			{
+				"date": "2023-06-08",
+				"longue-date": "8 juin 2023",
+				"event": "1ère assemblée générale",
+				"description": "On a marqué un jalon important pour nous lors de notre première assemblée générale. Cette réunion a été l’occasion d’accueillir cinq nouveaux membres au sein du conseil d’administration et de présenter les résultats prometteurs de notre première année d’activités. Nous avons eu le privilège de rejoindre 450 femmes grâce à nos diverses initiatives, notamment cinq évènements, cinq ateliers et quatre cohortes. De plus, nous avons tissé huit partenariats fructueux, renforçant ainsi notre impact et notre réseau pour l’avenir. Ce moment a été le reflet de notre engagement continu envers l’autonomisation des femmes et le développement communautaire."
+			}
+		],
+		"team": [
+			{
+				"name": "Mariam Coulibaly",
+				"role": "Co-fondatrice et directrice générale",
+				"description": "Mariam Coulibaly est une créative allumée dont la mission de vie est de révéler le potentiel des femmes. Fière ambassadrice de l’entrepreneuriat féminin, elle est la co-fondatrice et directrice de Startop®. Détentrice d’un master en gestion d’entreprise, elle aide les entrepreneures à concevoir des modèles d’affaires depuis 2011. Son ambition est de faire de l’entrepreneuriat un outil d’épanouissement pour que les femmes puissent rêver, agir et influencer. Découvre sa présentation en vidéo !",
+				"linkedin": "https://www.linkedin.com/in/mariamcoulibaly/",
+				"vidéo": "https://youtu.be/xrCjAtUrCqo"
+			},
+			{
+				"name": "Cindy Tinh",
+				"role": "Responsable des opérations",
+				"description": "Cindy Tinh, passionnée par l’artisanat, est une touche à tout qui aime créer et mettre en place des projets créatifs. Détentrice d’une maîtrise en gestion des organisations, Cindy est responsable des opérations chez Startop. Ce qui l’anime, c’est de concevoir des projets et d’assurer leur suivi pour que l’organisme atteigne son plein potentiel. Ce qu’elle aime, c’est mettre à profit ses compétences afin d’accompagner les femmes entrepreneures à développer leur organisation et à atteindre leur rêve. Découvre sa présentation en vidéo !",
+				"linkedin": "https://www.linkedin.com/in/cindytinh/",
+				"vidéo": "https://www.youtube.com/watch?v=IsgHosDhWn0"
+			},
+			{
+				"name": "Yannice Thérèse",
+				"role": "Responsable des médias",
+				"description": "Yannice Thérèse est une audacieuse passionnée, depuis plus de 15 ans, elle est engagée pour la défense des droits des peuples autochtones notamment en Guyane Française d’où elle est originaire. Elle s’intéresse aux affaires Internationales, l’entrepreneuriat et l’autochtonie. Dotée de compétences interpersonnelles, elle est ambassadrice et chargée de relations médias chez Startop, l’incubateur de communautés féminines qui sensibilise et accompagne les femmes vers l’entrepreneuriat et l’économie sociale.  Titulaire d’une Maîtrise en études internationales et riche de son héritage multiculturel, c’est avec un regard ouvert sur le monde qu’elle développe les actions au sein de Startop. Son but est d’aider les femmes d’ici et d’ailleurs à se dépasser, s’engager et s’épanouir grâce à l’entreprenariat. Découvre sa présentation en vidéo !",
+				"linkedin": "https://www.linkedin.com/in/yannicetherese/",
+				"vidéo": "https://youtu.be/tl9m3-1XCCg"
+			},
+			{
+				"name": "Martha Robledo",
+				"role": "Coordonnatrice des projets numériques",
+				"description": "Martha Robledo est une ingénieure en systèmes spécialisée en sécurité et en projets technologiques, mais elle est bien plus que cela. Femme joyeuse, travailleuse et passionnée, Martha est reconnue pour son dévouement sans faille et son leadership inspirant. En tant que coordonnatrice des projets numériques chez Startop, elle représente l’innovation et la créativité, guidant son équipe vers l’excellence. Elle adore travailler à humaniser les systèmes d’information, reconnaissant que derrière chaque ligne de code se cache une interaction humaine. Martha trouve un équilibre précieux entre sa carrière florissante et sa vie de famille, tout en partageant sa passion pour la technologie avec ses proches, les inspirant à leur tour.",
+				"linkedin": "https://www.linkedin.com/in/mrobledocriollo/"
+			},
+			{
+				"name": "Jessy Govindama",
+				"role": "Responsable des communications et de l'entrepreneuriat",
+				"description": "Avec plus de 10 ans d’expérience dans la communication, le marketing, l’entrepreneuriat, l’organisation d’évènements, Jessy Govindama aime se définir comme un couteau-suisse. Responsable des communications et de l’entrepreneuriat chez Startop, elle s’engage à transformer des idées brillantes en feuilles de route concrètes.  Diplômée d’une école decommerce (EGC Martinique), elle est également coach en développement personnel, car derrière chaque entreprise c’est avant tout sur le potentiel humain qu’elle aime mettre l’accent.  Jessy cultive sa joie par la danse, la peinture la lecture et pour elle, les meilleures idées fleurissent souvent autour d’un bon repas. Elle est fervente de relations authentiques et transparentes, là où la vulnérabilité de chacun se révèle comme un levier de force personnelle. Sa vocation est d’inspirer et d’accompagner les femmes à reconnaître et à valoriser leur unicité et leur potentiel.",
+				"linkedin": "https://www.linkedin.com/in/jessy-govindama/"
+			},
+			{
+				"name": "Sarah Kitzy Gineu-Delyon",
+				"role": "Vice-présidente du CA",
+				"description": "Historienne d’art de formation et directrice depuis 6 ans de l’organisme Artch, un incubateur pour les artistes émergent.e.s. Elle est également la fondatrice de saco un organisme en médiation culturelle et démocratisation de l’art et la trésorière du milieu d’un café artistique qui aide à la pratique amateure. Diplômée de la Sorbonne et détentrice d’une validation de guide-conférencière avec une spécialisation en art contemporain, Sarah sait écrire et parler d’art. Micro collectionneuse, hyper active et passionnée, elle est un véritable couteau suisse dans le secteur des arts visuels.",
+				"linkedin": "https://www.linkedin.com/in/sarah-kitzy-gineau-delyon-0680995a/"
+			},
+			{
+				"name": "Véronique Chevalier",
+				"role": "Trésorière du CA",
+				"description": "Franco-canadienne, mariée, mère de deux adultes. Véronique est originaire du sud-ouest de la France, où elle a eu la chance durant sa jeunesse de parcourir le monde avec ses parents et de développer un goût prononcé pour les voyages et de l’aventure. Titulaire d’un diplôme supérieur en secrétariat de direction et d’un certificat en ressources humaines, elle a occupé divers postes d’adjointe dans de grandes entreprises de renommées et dans des secteurs tels que TI, Énergie-Pétrochimie, Cabinet Conseil & Management, Aérospatial, Industrie Cosmétique, Formation et Bancaire. Ces 30 ans de carrière lui ont permis d’affiner ses domaines de prédilection : communication, formation et ressources humaines. Adjointe accomplie et passionnée, elle a lancé son entreprise en 2018 proposant un panel de services administratifs personnalisés et variés ainsi que ses conseils d’experte. Femme de parole et d’engagement, elle se donne à 200 % dans les mandats confiés pour atteindre les objectifs. Sa polyvalence combinée à sa forte capacité d’adaptation lui permettent de s’accommoder à toutes les situations et milieux professionnels.",
+				"linkedin": "https://www.linkedin.com/in/veronique-chevalier-376b8045/"
+			},
+			{
+				"name": "Bibisha Mbimbi",
+				"role": "Secrétaire du CA",
+				"description": "Lauréate du price InspirationnELLE 2018 de la Jeune femme en Ressources Humaines, Bibisha cumule plus de 15 années d’expérience dans le domaine de la gestion des ressources humaines. Tournée vers l’action, ambitieuse et engagée, s’impliquer dans le conseil d’administration de Startop est une évidence car elle souhaite laisser son empreinte au sein de l’écosystème entrepreneurial en contribuant à une initiative collective qui fait du sens pour les femmes entrepreneures et les inspire. Co-fondatrice d’une entreprise dans le secteur des cosmétiques ainsi que d’un podcast, Bibisha tient à impacter et influencer positivement les femmes de sa communauté, via un leadership créatif, inclusif et positif.",
+				"linkedin": "https://www.linkedin.com/in/bibishambimbiconsultanteressourceshumaines/"
+			},
+			{
+				"name": "Tatamo Andrian",
+				"role": "Administratrice du CA",
+				"description": "Créatrice de contenu à plein temps et autrice en devenir par passion, Tatamo est une maman intra/entre-preneure engagée, qui a toujours une pile de livres à lire sur sa table de chevet. Stratège en marketing de contenu titulaire d’un M.B.A, Tatamo façonne des histoires depuis qu’elle sait tenir un stylo. Sa mission : aider les marques au grand coeur à se connecter avec bienveillance à leur communauté. Également éditrice-en-chef du projet Working Maman et créatrice de contenu au Réseau des Femmes d’affaires du Québec, Tatamo est solidement investie au cœur de la sphère entrepreneuriale féminine. Et elle compte bien soutenir les membres inspirantes de Startop et leurs idées et projets prometteurs!",
+				"linkedin": "https://www.linkedin.com/in/tatamoandrian/"
+			},
+			{
+				"name": "Viktoria Bovbvskaia",
+				"role": "Administratrice du CA",
+				"description": "Viktoria rayonne en tant que mère, épouse et partenaire d’affaires engagées. Elle se consacre avec une énergie éclatante à sa mission : façonner un espace où l’expression de soi fleurit en toute sécurité. Gestionnaire de programme chez Rise, elle promeut l’entrepreneuriat pour celles et ceux avec des défis de santé mentale. Titulaire d’un baccalauréat en commerce et plus de 6 ans d’expérience en gestion, elle est une spécialiste du brainstorming qui offre des conseils stratégiques en gestion et financement ! Son objectif est de rapprocher les individus d’un pas de plus vers leurs rêves, en construisant une communauté de soutien chaleureux autour d’eux. Un héritage centré sur l’idée d’amener chacun à se rapprocher davantage de la réalisation de ses aspirations.",
+				"linkedin": "https://www.linkedin.com/in/bobovskaia/"
+			},
+			{
+				"name": "Yasmine Maricar",
+				"role": "Administratrice du CA",
+				"description": "Scientifique des données le jour et une créatrice de contenu passionnée (blogueuse, conférencière, illustratrice) la nuit, Yasmine Maricar se distingue par sa quête perpétuelle de sens dans le monde qui l’entoure. Elle ne se contente pas d’explorer les données et de développer des idées novatrices, elle porte une attention particulière à l’économie sociale et aux moyens d’apporter un impact positif au quotidien. En dehors de son parcours professionnel, Yasmine investit son temps et son énergie dans des associations bénévoles, où elle partage son expérience en informatique et devient une mentore inspirante pour les femmes souhaitant travailler dans les domaines des Sciences, Technologies, Ingénierie et Mathématiques (STIM). Animée par une compassion profonde et une oreille attentive, elle guide, soutient et encourage les femmes à poursuivre leurs rêves. En rejoignant Startop, Yasmine souhaite élargir son influence et continuer d’encourager les femmes à poursuivre leurs ambitions, que ce soit dans le domaine des STIM ou de l’entrepreneuriat.",
+				"linkedin": "https://www.linkedin.com/in/yasmine-maricar/"
+			}
+		]
+	},
+	"services": {
+		"coaching": {
+			"type": "Coaching Individuel",
+			"description": "Consultation. Notre approche allie créativité et efficacité pour atteindre tes objectifs d’affaires pour te conduire vers le succès. Que ce soit pour : découvrir ton potentiel entrepreneurial, clarifier ton idée, valider l’opportunité d’affaires, structurer ton entreprise, rédiger ton plan d’affaires, chercher du financement, ou améliorer tes ventes, Startop t’accompagne pour atteindre tes objectifs ! Un coaching d’1 heure ou 3 heures pour répondre à tes besoins en tant que femme et/ou entrepreneure.",
+			"additional_information": "Nous comprenons que chaque entrepreneur est unique, avec des besoins et des objectifs spécifiques. C’est pourquoi nous proposons des séances de coaching personnalisées, adaptées à votre situation et à vos aspirations. Que vous soyez au début de votre aventure entrepreneuriale ou que vous cherchiez à donner un nouvel élan à votre entreprise existante, notre équipe de coachs expérimentés est là pour vous soutenir. Nos services de coaching sont conçus pour les femmes entrepreneures, car nous croyons en l’importance de soutenir et d’autonomiser les femmes dans le monde des affaires. Nous sommes conscients des défis spécifiques auxquels les entrepreneurs peuvent faire face et nous sommes déterminés à vous fournir le soutien et les outils nécessaires pour réussir. Voici un aperçu de ce que nous vous suggérons lors de nos séances de coaching d’1 heure ou de 3 heures : – Découvrir votre potentiel entrepreneurial : Nous vous aiderons à explorer vos talents, vos passions et vos aspirations afin de découvrir votre potentiel en tant qu’entrepreneure. Comprendre vos forces vous permettra de bâtir sur des bases solides. – Clarifier votre idée : Si vous avez une idée d’entreprise mais que vous avez besoin de la définir plus clairement, nous vous guiderons à travers un processus de réflexion et d’analyse pour affiner votre concept et le rendre viable. – Valider l’opportunité d’affaires : Avant de vous lancer, il est crucial de vérifier la viabilité de votre idée. Nous vous aidons à évaluer le marché, la concurrence et les perspectives de croissance pour valider votre opportunité d’affaires. – Structurer votre entreprise :Une fois que votre idée est validée, nous vous assisterons dans la mise en place d’une structure d’entreprise solide et adaptée à vos objectifs. – Chercher du financement : Si vous avez besoin de financement pour démarrer ou développer votre entreprise, nous vous aidons à identifier les meilleures sources de financement et à préparer une stratégie de levée de fonds efficace. – Améliorer vos ventes : La réussite de votre entreprise dépend en grande partie de vos ventes. Nous vous donnons des conseils et des techniques pour améliorer vos performances de vente et augmenter votre rentabilité. Notre objectif ultime est de vous aider à atteindre vos objectifs entrepreneuriaux. Nos coachs passionnés et compétents sont là pour vous guider, vous encourager et vous soutenir à chaque étape de votre parcours. Prête à donner une impulsion positive à votre entreprise, réserve ta séance de coaching dès aujourd’hui !",
+			"price": "150.00$ – 400.00$"
+		},
+		"programme_pivot_économie": {
+			"type": "Programme Pivot en Économie Sociale",
+			"description": "Formation et atelier. Nous explorons des méthodes et des outils pour obtenir des résultats concrets car ton succès est notre ambition. Ce programme offre une approche complète pour accompagner ton entreprise à se transformer et à adopter des pratiques économiques et sociales plus durables. Il prend en compte des aspects essentiels tels que la formation, la consultation, le coaching, la gouvernance et la recherche de financement, pour faciliter une transition réussie vers l’économie sociale.",
+			"additional_information": "Un service complet pour faire pivoter ton entreprise vers l’économie sociale ! Nous t’accompagnons vers l’économie sociale. Voici un aperçu de chaque étape du programme : Formation : tu suivras une formation approfondie sur les principes fondamentaux de l’économie sociale, ses avantages et ses défis. Cette formation vise à sensibiliser les participants à l’importance de l’impact social et de la durabilité tout en maintenant leur viabilité économique. Consultation : des experts en économie sociale collaboreront avec toi pour évaluer leur modèle économique actuel, leurs pratiques commerciales et leurs opérations. L’objectif est d’identifier les domaines où l’entreprise peut améliorer son impact social tout en maintenant sa performance financière. Coaching et collaboration : tu bénéficieras également de séances de coaching personnalisées. Ces séances permettent d’élaborer des plans d’action spécifiques pour mettre en œuvre des changements et des initiatives en faveur de l’économie sociale. Des partenariats potentiels avec des organisations à but non lucratif, des coopératives ou d’autres acteurs de l’économie sociale peuvent également être retenus pour renforcer l’impact. Soutien technique : Cette étape du programme se concentre sur des aspects concrets de la transition vers l’économie sociale. Elle comprendra la création d’un plan d’action détaillé sur 7 pages, couvrant les objectifs, les échéances et les ressources nécessaires pour le changement. La gouvernance d’entreprise sera également supprimée pour s’assurer que les valeurs sociales sont intégrées dans les processus de prise de décision. De plus, l’incorporation en tant qu’entreprise sociale ou coopérative sera retenue pour structurer juridiquement l’entreprise en fonction de son nouveau modèle. Enfin, des options de financement seront explorées pour soutenir la transition vers l’économie sociale. Durée : Le programme est prévu pour durer 9 mois, au cours duquel les entreprises couvriront un total de 150 heures aux différentes étapes de formation, de consultation, de coaching et de soutien technique.",
+			"price": "7,500.00$"
+		},
+		"aide_à_la_gouvernance": {
+			"type": "Aide à la Gouvernance",
+			"description": "Soutien technique. Une équipe dévouée est à ton service pour mettre en place les processus nécessaires à la saine gestion de ton entreprise. Nous fournissons un soutien et des conseils aux organisations à but non lucratif dans les domaines de la gouvernance et de la stratégie d’affaires, en vue d’améliorer leur efficacité et leur impact.",
+			"additional_information": "Contenu de l’accompagnement (10 heures de soutien technique) : Évaluation des besoins :Nous commencerons par une évaluation approfondie des besoins de votre organisation afin de comprendre vos défis spécifiques et vos objectifs à court et à long terme. Gouvernance : Nous passerons en revue la structure de gouvernance actuelle de votre organisation et fournirons des recommandations pour améliorer son efficacité et sa transparence. Stratégie d’affaires : Nous travaillerons ensemble pour développer une stratégie d’affaires solide, alignée sur votre mission et vos valeurs, en mettant l’accent sur la durabilité financière et l’impact social. Développement de programmes : Nous vous aidons à définir des programmes et des initiatives qui répondent aux besoins de votre communauté cible tout en renforçant votre positionnement sur le marché des organismes à but non lucratif. Mobilisation des parties prenantes : Nous vous guiderons sur la manière d’impliquer efficacement vos parties prenantes, y compris les bénévoles, les donateurs et les partenaires, pour soutenir vos initiatives. Mesure de l’impact : Nous examinons les indicateurs clés de performance pour évaluer l’impact de vos activités et mettre en place un processus d’amélioration continue. N’hésites pas à nous faire part de tes besoins spécifiques ou de toute question supplémentaire que tu pourrais avoir. Durée de l’accompagnement : x semaines (à déterminer en fonction des besoins spécifiques de l’organisation) Coût total de l’accompagnement : 2 500 $ (payable en deux versements) Détails des versements : Premier versement : 1 250 $ à payer avant le début de l’accompagnement. Deuxième versement : 1 250 $ à payer à mi-parcours de l’accompagnement.",
+			"price": "2,500.00$"
+		},
+		"rédaction_du_plan_d_affaires": {
+			"type": "Rédaction du Plan d’Affaires",
+			"description": "Business plan. Nous rédigeons ton plan d’affaires pour mettre en valeur ton modèle d’affaires et te permettre d’accéder au financement. Notre service de rédaction de plan d’affaires complet, conçu pour t’aider à présenter ton entreprise de manière optimale et ainsi accéder plus facilement au financement dont tu as besoin.",
+			"additional_information": "Voici comment ça fonctionne : Collecte d’informations : Nous débutons en recueillant toutes les informations essentielles sur votre entreprise, y compris sa mission, sa vision, son modèle d’affaires, ses objectifs financiers, son marché cible et ses concurrents. Cette étape nous permet de bien comprendre ton projet afin de réussir au mieux sa valeur dans le plan d’affaires. Rédaction : Avec les données recueillies, notre équipe de rédacteurs expérimentés se sont réunis au travail pour créer un plan d’affaires complet et personnalisé. Nous veillons à mettre en évidence les points forts de votre modèle d’affaires tout en abordant les défis potentiels avec des solutions appropriées. Rencontre de validation : Une fois le premier brouillon rédigé, nous vous indiquons une réunion pour discuter du contenu, apporter des ajustements et nous assurer que nous sommes sur la même longueur d’onde concernant la vision globale du plan d’affaires. Remise du plan d’affaires : Après avoir pris en compte tes retours et suggestions, nous finalisons le plan d’affaires complet, prêt à être présenté à des partenaires potentiels ou des investisseurs. Le document sera structuré de manière professionnelle, facile à lire et à comprendre. Recherche de financement : Une fois que tu as en main le plan d’affaires définitif, nous te guidons dans la recherche de financement. Nous t’accompagnons dans l’identification des sources de financement adaptées à ton projet et t’aidons à préparer tes présentations pour maximiser tes chances de succès. Tarification et délai : Le service complet de rédaction de plan d’affaires est proposé au tarif de 7 700$, payable en deux versements. Le premier versement est effectué au début du processus, lors de la collecte d’informations, et le second au moment de la remise du plan d’affaires finalisé. Prête à mettre en valeur ton modèle d’affaires et à obtenir le financement dont tu as besoin ? Contacte-nous dès aujourd’hui pour démarrer le processus de rédaction de votre plan d’affaires ! Nous sommes impatientes de collaborer avec toi et de t’aider à réaliser tes projets entrepreneuriaux avec succès !",
+			"price": "7,700.00$"
+		},
+		"adhésion": {
+			"type": "Devenir membre",
+			"description": "En intégrant notre constellation, tu t’alignes avec des étoiles déterminées à révéler leur éclat. Viens ajouter ta lumière unique à cette galaxie d’excellence féminine !",
+			"price": "114.98$ par année (renouvelable) pour adhésion individuelle et 574.88$ par année (renouvelable) pour adhésion corporative"
+		}
+	},
+	"publications": {
+		"Cindy Tinh": [
+			{
+				"title": "5@7 des signataires du Défi 50-30 !",
+				"date": "2024-02-20",
+				"longue-date": "20 février 2024",
+				"description": "Startop et le Conseil économique des femmes ont convié les signataires du Défi 50-30 à un évènement unique. Rassemblant des leaders qui s’engagent pour l’inclusion de la diversité dans leurs organisations, cette soirée exceptionnelle ont mis aux participant.e.s de rencontrer les partenaires de l’écosystème qui les soutiennent dans leur virage EDI.",
+				"link": "https://youtu.be/OJtTgqibEtU"
+			},
+			{
+				"title": "Entrepreneuri at diversifié",
+				"date": "2023-04-27",
+				"longue-date": "27 avril 2023",
+				"description": "Lors de cette soirée nous avons mis en lumière la contribution de la diversité au développement économique et social du Québec. En effet, qu’elles soient artistes, initiatrices d’impact social, chauffeurs Uber, ou encore entrepreneures à temps partiel, leur apport à la richesse de notre province n’est pas à négliger! Cette conférence a révélé en chiffres et en histoire la valeur ajoutée des femmes dans la société québécoise.",
+				"link": "https://youtu.be/ugk08keIUoA"
+			},
+			{
+				"title": "Divers’Cité : Relève le Défi 50-30 !",
+				"date": "2023-03-29",
+				"longue-date": "29 mars 2023",
+				"description": "Sais-tu qu’à Montréal, les femmes représentent 52% de la population et la diversité (ethnoculturelle) 30% ? Ces ratios devraient se refléter dans les lieux décisionnels, or, ce n’est pas encore le cas. Les organisations limitées en termes de diversité ne mobilisent qu’une fraction du potentiel de leurs talents et laissent échapper des opportunités de créativité, d’innovation et d’impact. Si on te disait qu’il existe un défi qui prône la diversité, l’équité et l’inclusion, ça te tenterait d’y participer? Le Défi 50-30 lancé par le gouvernement du Canada a pour objectif d’inciter les organismes à avoir 50% de femmes et 30% des autres groupes en quête d’équité (personnes racisées, minorités visibles, personnes handicapées, LGBTQ2S+…), au sein des conseils d’administration et/ou des équipes de la haute direction. Pourquoi? Car nous sommes POUR une plus grande efficacité opérationnelle, POUR une amélioration de la satisfaction des employé.e.s, POUR un taux de rétention plus élevé au sein des CA et des équipes, et surtout, POUR une économie plus forte et la stimulation de l’innovation canadienne sur la scène mondiale! Es-tu prêt.e à relever ce défi? Cet évènement a été organisé en partenariat avec la CQCM et le WEC",
+				"link": "https://youtu.be/f3hHge2iDRI"
+			},
+			{
+				"title": "Cocktail VIP Startop",
+				"date": "2023-01-27",
+				"longue-date": "27 janvier 2023",
+				"description": "Cet évènement exclusif avait pour but de souligner le pivot vers l’économie sociale de dix organismes détenus par trente entrepreneures. Cette première cohorte en économie sociale a accompagné trente femmes issues de la diversité ethnoculturelle dans la restructuration et la pérennisation de leur organisation. La soirée a été agrémentée de cocktails, réseautage et discours inspirants."
+			}
+		],
+		"Kathleen Nandiguinn": [
+			{
+				"title": "Avoir un impact dans l’écosystème entrepreneurial",
+				"date": "2024-03-15",
+				"longue-date": "15 mars 2024",
+				"description": "Depuis sa récente création, Startop a pu toucher plus de 600 femmes, en 2023, grâce à ses nombreuses activités et sa participation à de multiples évènements en faveur de l’entrepreneuriat des femmes immigrantes et de l’économie sociale. D’emblée, pendant 9 mois, Startop a accompagné une cohorte de 10 organismes dans la structuration de leurs plans d’affaires et de leurs gouvernances. Parmi elles, Vivre100fibromes, a bénéficié de ses services pour redéfinir sa stratégie d’affaires et rejoindre plus de femmes. Ensuite, des évènements exceptionnels ont eu lieu tout le long de l’année, à Montréal parmi lesquels, un défilé de mode interculturel qui a réuni 250 spectateurs.trices et a permis de mettre en lumière des designers de la communauté afrodescendante. La soirée-débat sur l’inclusion dans l’économie sociale a eu également un impact réel : l’évènement a rassemblé les acteurs.trices et les décideur.e.s du secteur pour réfléchir aux solutions possibles face à la crise économique actuelle et au développement durable. Startop a noué de solides partenariats avec le Conseil économique des femmes, le CQCM et le projet défi 50-30 . Elle a également participé à différents panels comme à la Grande rencontre de la MIS avec les leaders publics organisée par la Maison de l’innovation sociale ou encore à l’assemblée de concertation sur l’EDI animé par le CQCM. Pour les années à venir, Startop souhaite multiplier son impact et accroître les entreprises à propriété féminine en se concentrant sur de nouveaux projets: la mise en place d’un programme de repreneuriat pour soutenir les entrepreneures qui souhaitent reprendre ou racheter d’une entreprise existante, la création d’un programme de formation en ligne sur l’entrepreneuriat et l’économie sociale, le développement de nouveaux partenariats en direction des entreprises privées, des organismes accompagnant des femmes immigrantes au Québec et au Canada, l’élaboration d’une étude sociologique sur l’entrepreneuriat des femmes issues de la diversité dans l’économie sociale au Québec. Somme toute, Startop encourage les femmes à oser se lancer dans cette incroyable aventure de l’entrepreneuriat, de croire en elles et surtout en leur belle étoile."
+			},
+			{
+				"title": "L’économie sociale comme atout pour l’entrepreneuriat féminin et ethnoculturelle",
+				"date": "2024-03-15",
+				"longue-date": "15 mars 2024",
+				"description": "L’entrepreneuriat des femmes ethnoculturelles dans l’économie sociale au Québec n’est pas anodin et Startop a compris qu’il existe un véritable potentiel à mettre de l’avant pour répondre à des solutions durables et responsables. En effet, en acceptant d’accompagner des femmes immigrantes dans cette démarche, Startop montre qu’il existe de nombreuses opportunités à saisir en investissant vers elles pour contribuer à développement du pays. Pour rappel, l’économie sociale est définie comme « l’ensemble des activités économiques à finalité sociale réalisées dans le cadre des entreprises dont les activités consistent notamment en la vente ou l’échange de biens ou de services ». Ainsi, il s’agit de répondre, à la fois, à une mission sociale et à un objectif de rentabilité économique. Par ailleurs, dans une étude sur l’implication des immigrants dans l’économie sociale au Québec, Valérie Chamberland et Lucie Dumais montrent que plusieurs aspects motivent les gestionnaires immigrants à s’investir dans ce secteur tels que les valeurs, les convictions personnelles, le mode de gouvernance, le choix du statut juridique, l’atmosphère de travail plus conviviale et la proximité avec la communauté ou encore la reconnaissance face aux défis relevés. Cependant, les femmes immigrantes doivent faire face à deux fois plus de défis qui peuvent décourager à entreprendre. En effet, parmi ces défis, ce qui revient souvent est l’accès aux sources de financement et la méconnaissance des programmes/services d’aide, la conciliation travail-famille, la multiplication des efforts démontrant la viabilité de leur projet et l’aspect intersectionnel. En définitive, Startop veut apporter une réponse à ces obstacles et encourager ces femmes à prendre leur place dans l’écosystème entrepreneurial notamment à travers à son offre de services. Grâce à son réseau d’expertes, elle est donc un soutien pour favoriser les retombées socio- économiques de ces entreprises et promouvoir la diversité."
+			},
+			{
+				"title": "L’ADN de Startop : “Entre et Prends ta vie en main” ",
+				"date": "2024-02-28",
+				"longue-date": "28 février 2024",
+				"description": "Quand nous entendons le terme de « Startop », nous pensons d’emblée à l’anglicisme « start up » qui veut dire « démarrer, créer, lancer » en français. De fait, ce jeu de mot s’applique à l’association des termes « star » et « top », des symboles pour dire que chaque femme est une étoile (star) qui doit rutiler et exceller (top). Créé en 2022, à Montréal, Startop est le seul incubateur en économie sociale au Québec destiné aux femmes entrepreneures issues de la diversité ethnoculturelle. Son objectif consiste à les accompagner et les sensibiliser à l’entrepreneuriat dans l’économie sociale ; la vision de Startop est donc de rendre l’entrepreneuriat plus accessible aux femmes et d’en faire un outil d’épanouissement professionnel. L’équipe est composée de trois membres actifs: Mariam Coulibaly, fondatrice et directrice générale de l’entreprise; Cindy Tinh, responsable des communications et organisations; et Yannice Thérèse, responsable des médias. Par ailleurs, le conseil d’administration, composé d’expertes aguerries dans l’entrepreneuriat féminin, joue également un rôle capital pour définir l’orientation et la stratégie de l’entreprise. Enfin, des bénévoles s’ajoutent à l’équipe pour faire vivre l’organisation et répondre à des missions ponctuelles. L’originalité de Startop vient surtout de son offre de services et son approche ludique, accessible et adaptée au monde des affaires. En effet, chez Startop, les entrepreneures doivent se sentir comme à la maison et en confiance lorsqu’elles franchissent le pasde l’organisme. Cette chaleur humaine et cette sororité font partie de l’ADN de Startop. À vrai dire, l’omniprésence de la couleur jaune est un élégant symbole pour faire rayonner les idées de ces femmes, les amener à passer à l’action et à porter fièrement cette casquette d’entrepreneurE. Concrètement, Startop propose comme offre de services à sa clientèle : de la formation en entrepreneuriat et en économie sociale, du soutien technique notamment dans la rédaction d’un plan d’affaires, dans l’accès aux services juridiques, de la consultation à travers des professionnels spécialisés en ressources humaines, en montage de dossiers administratives, dans la recherche de subventions, des activités de réseautage et des conférences pour se sensibiliser à l’entrepreneuriat, de l’accompagnement à l’entrepreneuriat hybride qui permet aux entrepreneures de conserver leur travail salarié à plein-temps. Ici, Startop s’adapte au calendrier des clientes en leur proposant ses services le soir ou en fin de semaine. Par conséquent, en cheminant avec l’entrepreneure dans la réalisation et le développement de son projet, Startop se positionne comme un véritable associé et souhaite bâtir un écosystème solide avec elles et pour elles. Au demeurant, Mariam rappelle que l’entrepreneuriat c’est tout simplement : « Entre et Prends ta vie en main »."
+			}
+		],
+		"Laura Espinosa": [
+			{
+				"title": "Des femmes qui ont un impact au-delà des frontières !",
+				"date": "2023-02-17",
+				"longue-date": "17 février 2023",
+				"description": "Mariam Coulibaly, cofondatrice et directrice de Startop, l’incubateur de communautés féminines qui accompagne les femmes sur le chemin de l’entrepreneuriat et de l’économie sociale, nous parle de la vision de l’organisme. À moyen terme, on aimerait voir une communauté de femmes internationales mettant leurs compétences et leurs connaissances au service d’un monde plus égalitaire et plus inclusif. Une vision claire et puissante. Au quotidien, nous renforçons l’échange et l’apprentissage afin de forger des liens pour croître mutuellement et assurer une société égalitaire en termes d’entrepreneuriat. En effet, seulement 30% des entrepreneurs sont des femmes et notre objectif est d’atteindre les 50%. Comment allons nous relever ce défi? Chaque femme qui vient d’un pays différents a une histoire unique et précieuse à partager. Elle a une trajectoire de vie pleine d’émotions, de sacrifices et d’accomplissements. Certaines femmes ont été confrontées à des défis et à des obstacles, tels que la barrière de la langue, l’adaptation à une nouvelle culture, quitter son pays natal et les sociaux et la lutter contre la discrimination ou les stéréotypes. L’Impact Startop dans la société Nous travaillons continuellement pour un impact local au Québec. Aujourd’hui, STARTOP se développe à travers le Canada, en Ontario, bientôt en Alberta et dans d’autres provinces, mais notre objectif est d’atteindre rapidement toute la francophonie et l’international. Il est important de garder à l’esprit que ce voyage comporte des défis, mais aussi des opportunités incroyables, c’est pourquoi la diversité est la clé de cette aventure. En effet, la diversité commence avec notre équipe opérationnelle qui est colorée et une équipe de direction qui vient des quatres coins du monde pour venir renforcer l’organisme. Un groupe de femmes extraordinaires qui se sont réunies pour rayonner. La richesse de la diversité La diversité des expériences et des parcours de vie des femmes à travers le monde peut être une source inestimable de connaissances, d’inspiration et d’apprentissage pour toutes. En collaborant ensemble et en partageant nos histoires, nous pouvons créer un mouvement mondial d’émancipation, d’autonomisation et de progrès collectif Je suis originaire de Côte d’Ivoire et en arrivant à Montréal il y a 14 ans, j’ai eu le courage de créer mon entreprise 2 ans après mon arrivée. Depuis lors, je  partage mon expérience entrepreneuriale avec d’autres femmes car la connaissance est une clé qui ouvre beaucoup de portes. C’est ma mission et ma passion, l’épanouissement professionnel de chaque femme.  Apprendre les unes des autres, dans un cercle d’entraide et de collaboration, nous permet d’atteindre les sommets. C’est pourquoi j’invite les femmes à rejoindre notre constellation d’étoiles pour briller avec nous. Vous êtes une femme entrepreneure ou qui songe à se lancer en affaires? Vous trouverez dans cette section plusieurs liens menant à des sources d’information spécifiques à l’entrepreneuriat au féminin : formes d’aide financière et professionnelle, formations, réseautage, mentorat, etc. Apprenez-en davantage sur l’entrepreneuriat et trouvez l’aide dont vous avez besoin."
+			}
+		],
+		"Topstar": [
+			{
+				"title": "Notre impact en 2023!!",
+				"date": "2024-06-03",
+				"longue-date": "3 juin 2024",
+				"description": "Pour Startop, 2023 c’était : ✅ 1 cohorte en ES ✅ 1 cohorte en ÉS ✅ 2 cohortes en ÉS ✅ 5 ateliers ✅ 8 évènements ✅ 12 partenariats ✅ 1 175 personnes rejointes ✅ 140 étoiles dans la constellation ✅ 130 femmes formées ✅ 300 heures d’accompagnement pro-bono Et bien d’autres choses encore!"
+			},
+			{
+				"title": "Économie sociale inclusive!",
+				"date": "2024-04-29",
+				"longue-date": "29 avril 2024",
+				"description": "2023-11-17 à Montréal, a eu lieu un rassemblement provincial organisé par Startop® dans le cadre du mois de l’économie sociale et solidaire. Cet évènement a été l’occasion de réunir plus de 80 personnes dont 30 organismes et des acteurs influents de l’économie sociale venant de diverses régions du Québec telles que le Saguenay, les Laurentides, la Capitale nationale, l’Estrie, l’Outaouais et bien d’autres. Ce rassemblement d’impact a été l’occasion d’aborder des sujets essentiels tels que la récession, la pénurie de main d’œuvre, le financement et le continuum de services en économie sociale. Ces interventions ont permis de constater qu’il existe un écosystème spécifique qui offre de nombreux avantages aux entreprises d’économie sociale. Elles ont été suivi d’échanges constructifs et enrichissants entre les panelistes et le public pendant l’agora et le moment de réseautage. Cette initiative de Startop® a créé une réelle opportunité de rapprochement entre les acteurs de l’économie sociale et les communautés culturelles, témoignant ainsi de l’engagement continu de l’organisme en faveur d’une économie sociale plus inclusive et diversifiée.",
+				"link": "https://youtu.be/SWQ0dMy0Xjs"
+			}
+		],
+		"Yannice Thérèse": [
+			{
+				"title": "Présentation de Startop",
+				"date": "2024-02-13",
+				"longue-date": "13 février 2024",
+				"description": "Startop® est le premier incubateur en entrepreneuriat et économie sociale pour les femmes au Québec, notamment celles issues de la diversité ethnoculturelle. Chaque année, l’organisme accompagne des projets innovants portés par des femmes exceptionnelles. Notre ambition est de rendre l’entrepreneuriat accessible à toutes les femmes afin qu’elles puissent s’approprier le mot entrepreneure.Au Québec nous sommes encore loin dans la parité entrepreneuriale. Les femmes racisées sont sous-représentées, d’autant plus les femmes noires. Celles-ci ne représentent que 4% des entrepreneurs, il y a donc encore du chemin à parcourir. L’économie diversifiée nous tient à cœur. Nous voulons nous assurer que tous les organismes notamment d’économie sociale dont les fondatrices sont issues de la diversité ethnoculturelle soient présentes sur la carte de cet écosystème. De plus, nous voulons nous étendre et rejoindre le Canada francophone et l’international (francophonie) car nous avons constaté un réel besoin pour les femmes de la diversité ethnoculturelle et immigrante. Nous comptons innover chaque année! Pour ce faire, nous continuerons notre cadence d’activités de sensibilisation, de réseautages et des évènements avec des thématiques accrocheuses et inusitées afin que les femmes puissent avoir du FUN et embarquer dans l’entrepreneuriat sans s’en rendre compte!",
+				"link": "https://youtu.be/ElzLmGjW9Ps"
+			}
+		]
+	},
+	"events": {
+		"2023": [
+			{
+				"type": "event",
+				"year": 2023,
+				"date": "2023-01-27",
+				"longue-date": "27 janvier 2023",
+				"time": "17:30 - 20:30",
+				"title": "SOIRÉE COCKTAIL VIP STARTOP",
+				"description": "Évènement: Cet évènement exclusif avait pour but de souligner le pivot vers l’économie sociale de dix organismes détenus par trente entrepreneures. Cette première cohorte en économie sociale a accompagné trente femmes issues de la diversité ethnoculturelle dans la restructuration et la pérennisation de leur organisation. La soirée a été agrémentée de cocktails, réseautage et discours inspirants.",
+				"price": "Gratuit"
+			},
+			{
+				"type": "event",
+				"year": 2023,
+				"date": "2023-02-17",
+				"longue-date": "17 février 2023",
+				"time": "18:00 - 20:00",
+				"title": "SOIRÉE FLASH BLACK",
+				"description": "Évènement: À l'occasion du Mois de l'Histoire des Noirs, Startop rassemble des femmes inspirantes pour partager leur parcours entrepreneurial et met en lumière des artisanes de la communauté afrodescendante. Ne ratez pas l'occasion de vivre un moment convivial et mémorable - fous rires garantis !",
+				"location": "251 Av des Pins Ouest, Montréal, QC H2W 1R6, Canada"
+			},
+			{
+				"type": "event",
+				"year": 2023,
+				"date": "2023-03-29",
+				"longue-date": "29 mars 2023",
+				"time": "18:00 - 20:30",
+				"title": "DIVERS’CITÉ : RELÈVE LE DÉFI 50-30 !",
+				"description": "Évènement: Sais-tu qu’à Montréal, les femmes représentent 52% de la population et la diversité (ethnoculturelle) 30% ?  Ces ratios devraient se refléter dans les lieux décisionnels, or, ce n’est pas encore le cas.  Les organisations limitées en termes de diversité ne mobilisent qu’une fraction du potentiel de leurs talents et laissent échapper des opportunités de créativité, d’innovation et d’impact.  Si on te disait qu’il existe un défi qui prône la diversité, l’équité et l’inclusion, ça te tenterait d’y participer ?  Le Défi 50-30 lancé par le gouvernement du Canada a pour objectif d’inciter les organismes à avoir 50% de femmes et 30% des autres groupes en quête d’équité (personnes racisées, minorités visibles, personnes handicapées, LGBTQ2S+…), au sein des conseils d’administration et/ou des équipes de la haute direction.  Pourquoi ?  Car nous sommes POUR une plus grande efficacité opérationnelle, POUR une amélioration de la satisfaction des employé.e.s, POUR un taux de rétention plus élevé au sein des CA et des équipes, et surtout, POUR une économie plus forte et la stimulation de l’innovation canadienne sur la scène mondiale !  Es-tu prêt.e à relever ce défi ?  Cette soirée a pour but d’entamer la conversation sur l’ÉDI (Équité – Diversité – Inclusion) et d’outiller les organisations qui souhaitent être plus inclusives.  Au programme :  – Réseautage animé  – Cocktail et bouchées  – Maillage entre organismes et candidats  – Allocution et panel sur l’ÉDI et le Défi 50-30 : l’avantage de la diversité dans les lieux décisionnels. Inscription obligatoire. Évènement en partenariat avec la CQCM et le WEC.",
+				"location": "209 Avenue des Pins Ouest, Montréal, QC, H2W 1R6, Canada"
+			},
+			{
+				"type": "event",
+				"year": 2023,
+				"date": "2023-04-27",
+				"longue-date": "27 avril 2023",
+				"time": "17:30 - 20:30",
+				"title": "ENTREPRENEURIAT DIVERSIFIÉ",
+				"description": "Évènement: Lors de cette soirée nous mettrons en lumière la contribution de la diversité au développement économique et social du Québec.  En effet, qu’elles soient artistes, initiatrices d’impact social, chauffeurs Uber, ou encore entrepreneures à temps partiel, leur apport à la richesse de notre province n’est pas à négliger !  Cette conférence vous révèlera en chiffres et en histoire la valeur ajoutée des femmes dans la société québécoise.  Au programme :  – Réseautage animé  – Présentation des faits saillants sur la diversité entrepreneuriale  – Panel 1 : l’importance et l’impact de l’apport des femmes entrepreneures de la diversité  – Panel 2 : l’économie sociale et la diversité  – Présentation d’organismes spécialisés dans l’accompagnement en entrepreneuriat / ethnoculturel  – Concert.",
+				"location": "209 Avenue des Pins Ouest, Montréal, QC, H2W 1R6, Canada"
+			},
+			{
+				"type": "event",
+				"year": 2023,
+				"date": "2023-10-14",
+				"longue-date": "14 octobre 2023",
+				"time": "18:00 - 22:00",
+				"title": "GALA WARABA",
+				"description": "Évènement: Startop est fière partenaire du Gala Waraba, un évènement qui porte sous les projecteurs, récompense et célèbre les femmes entrepreneures de la diversité qui se sont démarquées en 2022. Ces femmes lionnes qui font la fierté et donnent l’image d’une communauté qui innove et qui réussit! Le REFA CANADA, réseau entrepreneurial des femmes africaines, est une organisation à but non lucratif créée par et pour les femmes entrepreneures issues de l'immigration. Son objectif est d'informer, de former et de créer un espace de réseautage pour pour entreprendre et s'épanouir ensemble.",
+				"location": "1717 Boul. le Corbusier, Laval, QC H7S 2K7, Canada"
+			},
+			{
+				"type": "event",
+				"year": 2023,
+				"date": "2023-10-17",
+				"longue-date": "17 octobre 2023",
+				"time": "18:30 - 20:00",
+				"title": "Parcours en économie sociale : l’ancrage et la collaboration",
+				"description": "Évènement: Nous te proposons un parcours en 7 étapes pour : 1.Découvrir l’économie sociale et son écosystème 2.Façonner ton projet et en faire un modèle d’affaires gagnant  3. Être outillé en entrepreneuriat collectif : 14 heures de formation et co-développement 4.Bâtir un réseau solide et des collaborations avec d’autres entrepreneures.",
+				"location": "En ligne",
+				"price": "Gratuit pour les membres de Startop et 300$ pour les non-membres"
+			},
+			{
+				"type": "event",
+				"year": 2023,
+				"date": "2023-10-20",
+				"longue-date": "20 octobre 2023",
+				"time": "19:00 - 15:00",
+				"title": "Assemblée de concertation Équité – Diversité – Inclusion",
+				"description": "Évènement: Startop participera à cette assemblée de concertation afin de dégager des priorités d’actions qui appuieront et inspireront les coopératives et les mutuelles à mettre en place des mesures exemplaires en matière d’équité, de diversité et d’inclusion.  Les assemblées de concertation permettent aux membres de se concerter sur des enjeux transversaux de la coopération et de la mutualité afin de faire des propositions concrètes au conseil d’administration visant ainsi à les appuyer ainsi que la permanence dans l’élaboration des plans d’action annuels du CQCM.",
+				"location": "5750 Rue J.-B.- Michaud Lévis, QC G6V 0B1, Canada",
+				"price": "30$"
+			},
+			{
+				"type": "event",
+				"year": 2023,
+				"date": "2023-10-24",
+				"longue-date": "24 octobre 2023",
+				"time": "18:30 - 20:00",
+				"title": "Parcours en économie sociale : le financement",
+				"description": "Évènement: Nous te proposons un parcours en 7 étapes pour : 1.Découvrir l’économie sociale et son écosystème 2.Façonner ton projet et en faire un modèle d’affaires gagnant  3. Être outillé en entrepreneuriat collectif : 14 heures de formation et co-développement 4.Bâtir un réseau solide et des collaborations avec d’autres entrepreneures.",
+				"location": "En ligne",
+				"price": "Gratuit pour les membres de Startop et 300$ pour les non-membres"
+			},
+			{
+				"type": "event",
+				"year": 2023,
+				"date": "2023-11-03",
+				"longue-date": "3 novembre 2023",
+				"time": "07:30 - 12:00",
+				"title": "GRANDE RENCONTRE DE LA MIS AVEC LES LEADERS PUBLICS",
+				"description": "Évènement: La Maison de l’innovation sociale (MIS) invite les actrices et acteurs publics de tous les paliers gouvernementaux, occupant tant des rôles administratif que politique, et acteurs et actrices de l’écosystème d’innovation sociale à découvrir le potentiel exceptionnel d’une démarche d’innovation sociale pour répondre aux grands enjeux sociaux et environnementaux."
+			},
+			{
+				"type": "event",
+				"year": 2023,
+				"date": "2023-11-17",
+				"longue-date": "17 novembre 2023",
+				"time": "17:30 - 20:00",
+				"title": "L’ÉCONOMIE SOCIALE INCLUSIVE, UNE SOLUTION À LA CRISE ÉCONOMIQUE",
+				"description": " Évènement: Nous pensons que l'économie sociale est une des solutions à la crise économique actuelle car son modèle axé sur des pratiques commerciales responsables la rend plus résiliente face aux chocs économiques. De plus, elle contribue à stimuler la participation démocratique et à garantir un développement économique durable. Cependant, pour que l’économie sociale atteigne son plein potentiel, il est impératif qu’elle devienne plus inclusive pour réduire les inégalités et offrir des opportunités économiques aux groupes marginalisés. Il est reconnu que la diversité culturelle enrichit et contribue à l’innovation par la pluralité des perspectives.  Nous t’invitons à te joindre à cette discussion captivante pour participer au changement. Un moment d’Agora se tiendra, où nous encourageons vivement la participation du public pour enrichir la conversation.  Que tu sois affiliée à une organisation ou que tu t’intéresses au sujet à titre personnel, nous t’accueillerons avec enthousiasme !  Au programme :  17h30 – 17h50 : Accueil, cocktail et réseautage  17h50 – 18h10 : Mot de bienvenue et allocutions  18h10 – 18h30 : Panel 1 – L’économie sociale, une réponse à la crise économique  18h30 – 18h50 : Panel 2 – L’inclusion, la clé du succès de l’économie sociale  18h50 – 19h10 : Agora – questions et discussion ouverte avec le public  19h10 ou 19h25 : Mise en valeur des champions de la diversité en économie sociale  19h25 – 19h30 : Mots de remerciements  19h30 – 20h : Cocktail – bouchées et réseautage. ",
+				"location": "209 Av des Pins Ouest, Montréal, QC H2W 1R6, Canada",
+				"price": "Gratuit"
+			}
+		],
+		"2024": [
+			{
+				"type": "event",
+				"year": 2024,
+				"date": "2024-01-03",
+				"longue-date": "3 janvier 2024",
+				"time": "12:00 - 13:00",
+				"title": "BOÎTE À OUTILS EDI : LE DÉFI DE DIVERSITÉ DES CONSEILS D’ADMINISTRATION",
+				"description": "Évènement: L’équité, la diversité et l’inclusion (ÉDI) est au cœur des préoccupations actuelles dans nos sociétés. Souvent, ces termes sont utilisés de manière interchangeable, mais il est essentiel de comprendre leurs nuances pour créer une société véritablement inclusive et juste.  Lors de cette rencontre, nous aurons l’immense plaisir de :  1. La présentation de la boîte à outils “Ce qui fonctionne” :  Ces ressources précieuses, spécialement conçues pour les organisations canadiennes engagées, seront mises à l’honneur. Elles constituent une fondation solide pour accueillir et renforcer des initiatives favorisant l’équité et la diversité avec des guides pratiques, des témoignages inspirants et des approches évaluatives pour bâtir des environnements de travail véritablement inclusifs.  2. Un focus sur la diversité au sein des conseils d’administration :  Nous mettrons l’accent sur l’importance cruciale d’inclure diverses voix au sein des conseils d’administration. Des outils pratiques pour l’instauration de bonnes pratiques seront présentés avec bienveillance, accompagnés de conseils stratégiques pour le recrutement et la rétention de membres de CA variés, reflétant la richesse de notre société.  3. Cette rencontre favorisera l’échange entre les participants :  Elle sera l’occasion idéale pour un partage d’idées et d’expériences sur la diversification des conseils d’administration. Nous espérons que ces dialogues ouvriront la voie à des perspectives nouvelles, mettront en lumière les obstacles à surmonter et célébreront les succès de chacun dans la création d’espaces plus inclusifs.",
+				"location": null,
+				"price": "Gratuit",
+				"link": null
+			},
+			{
+				"type": "event",
+				"year": 2024,
+				"date": "2024-02-01",
+				"longue-date": "1 février 2024",
+				"time": "17:30 - 19:30",
+				"title": "5@7 DES SIGNATAIRES DU DÉFI 50-30 !",
+				"description": "Évènement: Startop et le Conseil économique des femmes sont ravis de vous convier à une soirée exclusive pour connecter avec d’autres signataires du Défi 50-30, un évènement unique rassemblant des leaders qui s’engagent pour l’inclusion de la diversité dans leurs organisations. Cette soirée exceptionnelle vous permettra de rencontrer les partenaires de l’écosystème qui vous soutiennent dans votre virage EDI.  Au programme :   Cocktail et réseautage dans une ambiance conviviale Présentation des opportunités à venir pour les signataires du défi  Échange et partage sur les besoins des organisations  Cette soirée sera également l’occasion de célébrer les réussites et les avancées réalisées grâce au Défi 50-30 ! Rejoignez-nous pour une soirée mémorable, où l’excellence, la diversité et l’unité seront à l’honneur.",
+				"location": null,
+				"price": "Gratuit",
+				"link": null
+			},
+			{
+				"type": "event",
+				"year": 2024,
+				"date": "2024-02-07",
+				"longue-date": "7 février 2024",
+				"time": "12:00 - 13:00",
+				"title": "LA BOÎTE À OUTILS « CE QUI FONCTIONNE » LE DÉFI DE LA COULEUR",
+				"description": "Évènement: Notre prochaine session enrichissante sur “Le défi de la couleur : axé sur la charge émotionnelle des Noirs au Canada”, vous apportera une expérience à la fois éducative et émotionnellement résonnante :  1. Présentation de la boîte à outils du défi 50-30 :  Nous débuterons par une présentation dynamique de la boîte à outils du défi 50-30, qui est un ensemble de ressources spécialement conçues pour accompagner les organisations canadiennes engagées dans l’adoption d’initiatives qui promeuvent l’équité et la diversité. Cette boîte à outils servira de fondement pour aider les organisations à atteindre des objectifs ambitieux en matière de représentation diversifiée et inclusive.  2. Exploration des données statistiques sur les défis de discrimination et d’intégration des Noirs au Canada :  Nous plongerons dans les données statistiques révélatrices pour illustrer les défis de discrimination et d’intégration que rencontrent les communautés noires. Tout en dévoilant ces réalités, nous présenterons des outils pratiques pour favoriser un environnement non discriminatoire. Ces ressources viseront à équiper les organisations avec les compétences nécessaires pour reconnaître, prévenir et combattre efficacement les préjudices raciaux.  3. Échange et partage d’histoires de résilience :  Finalement, cette session encouragera un dialogue riche et des échanges d’histoires personnelles parmi les participants. Nous ouvrirons un espace pour que les récits de résilience et d’expériences vécues puissent être partagés, donnant vie à la réalité statistique et permettant à tous de se connecter sur un plan plus humain et empathique. Cela visera à créer un sentiment de communauté et de soutien mutuel tout en cherchant à inspirer des actions positives et durables.  Info-session en partenariat avec le Women’s Economic Council.",
+				"location": null,
+				"price": "Gratuit",
+				"link": null
+			},
+			{
+				"type": "event",
+				"year": 2024,
+				"date": "2024-02-16 - 2024-03-08",
+				"longue-date": "16 février 2024 - 8 mars 2024",
+				"time": null,
+				"title": "RETOMBÉES DES ACTIVITÉS DE RÉSEAUTAGE DE STARTOP",
+				"description": "Évènement: Comment la participation à nos activités vous aide à rencontrer de nouvelles personnes avec lesquelles améliorer vos produits/services existants ou créer de nouveaux produits/services ? Nous réalisons actuellement un projet de recherche avec des chercheures de l’École des sciences de la Gestion – UQAM afin de mieux comprendre comment la participation à nos activités vous aide à rencontrer de nouvelles personnes avec lesquelles améliorer vos produits/services existants ou créer de nouveaux produits/services.  Profil des participantes recherchées : Femme entrepreneure ou aspirante entrepreneure issue de l’immigration, installée au Québec et ayant déjà participé à au moins une activité de réseautage de Startop.  Votre participation impliquera une entrevue individuelle avec une membre de l’équipe de recherche d’une durée d’une heure environ. Lors de cette entrevue, vous serez interrogé sur:   Votre profil et activité professionnelle; Vos différents réseaux mobilisés au Québec et vos besoins en matière de réseautage; Vos partenaires au Québec (avec lesquels vous améliorez vos produits/services existants ou créez de nouveaux produits/services); Votre perception des activités de réseautage de Startop et vos recommandations quant à l’amélioration de ces activités.  L’équipe de recherche garantit la confidentialité des informations qui seront collectées. Inscrivez ci-dessous vos coordonnées et vos disponibilités pour confirmer votre intérêt à participer à l’étude.   À noter que toutes les participantes auront droit à 60 minutes de coaching personnalisé avec Startop OU à une carte cadeau VISA ou MASTERCARD de 75$",
+				"location": null,
+				"price": "Gratuit",
+				"link": null
+			},
+			{
+				"type": "event",
+				"year": 2024,
+				"date": "2024-02-22",
+				"longue-date": "22 février 2024",
+				"time": "12:00 - 13:30",
+				"title": "L’IMPACT DE L’INCLUSION SUR LA PERFORMANCE DES ENTREPRISES !",
+				"description": "Évènement: Le Cégep Marie-Victorin et Startop t'invitent à un atelier-discussion sur l’EDI. Rejoins la conférence animée par notre directrice sur l’impact de l’inclusion. Découvre son partage d’expérience enrichissant et des statistiques convaincantes.  Une occasion inédite d’apprendre, d’appliquer et de propulser ton entreprise vers de nouveaux sommets d’innovation grâce à la diversité.",
+				"location": null,
+				"price": "Gratuit",
+				"link": "https://www.eventbrite.fr/e/mois-de-lhistoire-des-noires-inclusion-en-emploi-tickets-801847576687?aff=oddtdtcreator"
+			},
+			{
+				"type": "event",
+				"year": 2024,
+				"date": "2024-02-24",
+				"longue-date": "24 février 2024",
+				"time": "10:00 - 17:00",
+				"title": "BRUNCH DES FEMMES – 2ÈME ÉDITION",
+				"description": "Évènement: Startop est heureux de s’associer à Black Estrie pour sa deuxième édition du brunch des femmes à Sherbrooke avec un super programme : brunch, panels, ateliers, conférences, réseautage et bien plus encore ! Attends-toi à être boostée par Mariam Coulibaly avec sa conférence pour propulser ton leadership ! Elle te donnera les clés pour découvrir ton potentiel, passer à l’action et influencer.",
+				"location": null,
+				"price": "30$",
+				"link": null
+			},
+			{
+				"type": "event",
+				"year": 2024,
+				"date": "2024-03-08",
+				"longue-date": "8 mars 2024",
+				"time": "06:30 - 20:30",
+				"title": "JOURNÉE DES DROITS DE LA FEMME : PROPULSE-TOI !",
+				"description": "Évènement: Startop et son réseau se lancent le défi de renforcer les capacités de plus de 200 femmes en une soirée. C’est l’occasion d’offrir des cadeaux aux Femmes !  À l’occasion de la Journée des droits internationales de la Femme, Startop et son réseau se lancent le défi de renforcer les capacités de plus de 200 femmes en une soirée.  Viens trouver de la valeur dans chaque intervention qui a pour but de t’aider à te développer.   Au Programme :   18h15 – 18h45 : Accueil & réseautage.  18h50 – 19h : Mot de bienvenue.  19h – 20h20 : Boîte à outils (conférences). Réussir mon intégration, Activer mon potentiel, Propulser mon leadership, Impacter avec mon entreprise, Booster ma visibilité, Oer gagner de l’argent, Innover pour ma communauté. 20h20 – 20h30 : Mot de clôture.  Pourquoi participer à cet évènement ?  Sortir avec des clés qui vont transformer ta vie, prendre le plein de boost pour te motiver, connecter avec des femmes inspirantes.",
+				"location": "209 Avenue des Pins Ouest, Montréal, QC, H2W 1R6, Canada",
+				"price": "Gratuit"
+			},
+			{
+				"type": "event",
+				"year": 2024,
+				"date": "2024-03-20",
+				"longue-date": "20 mars 2024",
+				"time": "12:00 - 13:00",
+				"title": "LA BOÎTE À OUTILS « CE QUI FONCTIONNE » LE DÉFI DE L’INCLUSION",
+				"description": "Évènement: Dans cette séance d’information et d’échange sur l’équité, la diversité et l’inclusion (EDI), centrée sur le thème stimulant du leadership inclusif, nous aurons le plaisir de développer :  1. Une présentation dynamique de la boîte à outils “Ce qui fonctionne” :  Nous offrirons une palette de ressources dynamiques, élaborées pour les leaders canadiens désireux d’incarner l’inclusivité dans leur gestion. Ces outils seront une source d’inspiration et un guide pour les pratiques de leadership qui célèbrent la diversité et encouragent l’équité à tous les niveaux de l’organisation.  2. Une exploration interactive de la diversité dans le leadership :  Nous allons explorer comment enrichir le leadership de nos organisations avec une diversité de pensées et d’expériences. Des stratégies pratiques et des exemples de meilleures pratiques en matière de leadership inclusif seront partagés, éclairant la voie vers un environnement organisationnel où chaque voix est valorisée et entendue.  3. Cette rencontre favorisera l’échange entre les participants :  Un dialogue ouvert et engageant sera encouragé pour que les participants puissent partager leurs idées, défis et stratégies concernant le leadership inclusif. Ensemble, nous découvrirons comment les leaders peuvent agir comme des catalyseurs de changement, en brisant les barrières et en bâtissant des équipes où la diversité est non seulement présente mais activement soutenue et intégrée dans la culture de l’entreprise. À propos de notre partenaire :  le Conseil Économique des Femmes (CEF) est la seule organisation nationale qui défend le développement économique des femmes à travers le Canada et soutient les réseaux d’organisations aux vues similaires.  Le projet du CEF 50:30 vise à :  • Sensibiliser le public aux obstacles systémiques qui limitent l’accès des femmes aux postes de direction dans tous les secteurs, y compris le secteur coopératif.  • Accroître la collaboration et le soutien entre les dirigeant.es afin de les aider à s’engager sur la bonne voie pour atteindre les objectifs de diversité et d’inclusion du Défi 50-30.  • Développer de nouvelles stratégies, de meilleures pratiques et de nouvelles ressources, y compris la mise à jour et l’adaptation de ce qui existe, afin d’accroître la diversité et de renforcer l’équité et l’inclusion.  • Renforcer les compétences et préparer un plus grand nombre de femmes prêtes à diriger, en particulier celles appartenant à des groupes sous-représentés, afin qu’elles puissent assumer davantage de rôles dans l’encadrement supérieur.  • Créer de nouvelles opportunités qui mettent en relation diverses femmes avec les processus de candidature, de prise de décision et de maintien dans le leadership coopératif. ",
+				"location": null,
+				"price": "Gratuit",
+				"link": null
+			},
+			{
+				"type": "event",
+				"year": 2024,
+				"date": "2024-03-27",
+				"longue-date": "27 mars 2024",
+				"time": "17:30 - 20:00",
+				"title": "RÉSEAUTER POUR INNOVER ET DÉVELOPPER !",
+				"description": "Évènement: Tu souhaites élargir ton réseau pour donner un nouvel élan à ton parcours professionnel ? Tu veux créer des opportunités d’affaires et accélérer la croissance de ton entreprise ? Participe à cet évènement unique qui t’offre la chance de plonger dans l’univers du réseautage. Que tu sois à la recherche de nouvelles idées, de conseils pratiques, ou de partenariats stratégiques, cette soirée t’ouvre les portes d’un univers de possibilités.  Le réseautage t’offre de réelles opportunités, que ce soit pour développer tes affaires ou ta carrière et c’est une pratique incontournable du développement professionnel ! On y rencontre de potentiels collaborateurs, clients, fournisseurs ou mentors. Il faut donc apprendre à réseauter de manière stratégique pour atteindre tes objectifs.  Au programme :  Accueil et cocktail dinatoire, activité de réseautage animée, groupe de discussion. Rejoins-nous à la salle des communautés pour une élargir ton cercle d’influence et découvrir comment le réseautage peut êtrela clé de ton développement.",
+				"location": "251 Av des Pins Ouest, Montréal, QC H2W 1R6, Canada",
+				"price": "Gratuit",
+				"link": null
+			},
+			{
+				"type": "event",
+				"year": 2024,
+				"date": "2024-04-17",
+				"longue-date": "17 avril 2024",
+				"time": "12:00 - 14:00",
+				"title": "LUNCH & LEARN – DÉFI 50-30 ! : ACCÉLÉRER L’INCLUSION",
+				"description": "Évènement: Startop et le Conseil économique des femmes sont heureux de vous convier à cette rencontre qui a pour objectif de fournir un espace d'apprentissage et de réseautage autour de l'EDI. Programme   12h – 12h30 : Repas et Réseautage  Un moment convivial pour se rencontrer et échanger autour d’un repas. Une excellente opportunité de tisser des liens avec d’autres professionnels engagés en faveur de l’EDI.  12h30 – 13h30 : Atelier EDI  Présentation d’un programme EDI complet, disponible en ligne, conçu pour ceux qui souhaitent approfondir leurs connaissances et compétences en matière d’équité, de diversité et d’inclusion. Cet atelier interactif vous équipera des outils et des stratégies nécessaires pour accélérer l’inclusion au sein de votre organisation.  13h30 – 14h : Période d’Échange et de Questions  Une demi-heure dédiée aux questions, permettant un échange enrichissant entre les participants et les intervenants. Une occasion de partager des expériences, de discuter des défis et de trouver des solutions pratiques pour promouvoir l’EDI.  À qui s’adresse cet évènement ?  Cet atelier “Lunch and Learn” est spécifiquement conçu pour les signataires du défi 50-30 ainsi que pour tous ceux qui s’intéressent à l’Équité, la Diversité et l’Inclusion (EDI). Il s’adresse tant aux spécialistes en EDI qu’aux personnes issues de la diversité qui aspirent à occuper des postes décisionnels.   Nous vous invitons à vous joindre à nous pour cette session enrichissante, conçue pour vous fournir les connaissances et les compétences nécessaires pour transformer votre environnement de travail en un espace plus inclusif. Ensemble, accélérons l’inclusion !",
+				"location": "251 Av des Pins Ouest, Montréal, QC H2W 1R6, Canada",
+				"price": "Gratuit"
+			},
+			{
+				"type": "event",
+				"year": 2024,
+				"date": "2024-05-17",
+				"longue-date": "17 mai 2024",
+				"time": "18:00 - 20:00",
+				"title": "AGA STARTOP : INITIATION À LA GOUVERNANCE",
+				"description": "Évènement: Tu es invité.e à l’assemblée générale de Startop ! Dans le but de partager cette belle expérience avec toi, nous avons concocté un atelier sur la gouvernance qui sera suivi de notre assemblée générale ! 17h30 – 18h : Accueil et réseautage 18h – 18h45 : Conférence gouvernance 18h45 – 19h : Pause 19h – 19h45 : AGA 19h45 – 20h : Q/A 20h – 20h30 : Cocktail et réseautage",
+				"location": "251 Av des Pins Ouest, Montréal, QC H2W 1R6, Canada",
+				"price": "Gratuit"
+			},
+			{
+				"type": "event",
+				"year": 2024,
+				"date": "2024-05-24",
+				"longue-date": "24 mai 2024",
+				"time": "12:00 - 12:45",
+				"title": "SÉANCE D’INFORMATIONS AU PROGRAMME : COHORTE RELÈVE EN ÉCONOMIE SOCIALE",
+				"description": "Évènement: Tu es passionnée par le changement social ? Tu as une initiative d’économie sociale que tu veux mettre en place ? Ou peut-être fais-tu partie d’une organisation à but non lucratif et cherches-tu à renforcer ta gouvernance pour accéder à davantage de financements ?  Si c’est le cas, notre programme est fait pour toi ! ✨  ➡️ Voici les avantages :  ⭐️ Structuration ou restructuration de ton organisation  ⭐️ Accompagnement complet par notre réseau d’experts  ⭐️ Acquisition d’outils de gestion essentiels  ⭐️ Création d’une communauté d’entraide bienveillante  ⭐️ Mise en commun des compétences pour répondre aux appels à projets  ⭐️ Soutien technique pour l’incorporation, la recherche de financement, le recrutement et la gouvernance  ⭐️ Support post-programme pendant 6 mois (conseils, comptabilité, promotion, réseautage…)  Participe à la séance d’informations pour en savoir plus !",
+				"price": "Gratuit"
+			},
+			{
+				"type": "event",
+				"year": 2024,
+				"date": "2024-06-13",
+				"longue-date": "13 juin 2024",
+				"time": "TOUTE LA JOURNÉE",
+				"title": "L’ENTREPRENEURIAT COLLECTIF FÉMININ",
+				"description": "Évènement: Nous vous remercions pour votre intérêt à participer à ce projet de recherche en partenariat avec l’Université du Québec à Trois-Rivières. L’objectif est de mieux comprendre comment soutenir l’entrepreneuriat féminin en collectif dans sa spécificité.  L’entrevue de groupe sera d’une durée d’environ 90 minutes. Nous aborderons ensemble lors des échanges la rétrospective et la dynamique de l’expérience d’entrepreneuriat collectif à laquelle vous aviez contribué.",
+				"price": "Gratuit",
+				"link": "https://forms.zohopublic.com/startop/form/Lentrepreneuriatcollectiffminin/formperma/uo7hwcptWYi2xwDQCVfYRFRpGCOwwAFNYJH4b-2nbb8"
+			},
+			{
+				"type": "event",
+				"year": 2024,
+				"date": "2024-06-17",
+				"longue-date": "17 juin 2024",
+				"time": "TOUTE LA JOURNÉE",
+				"title": "COHORTE RELÈVE EN ÉCONOMIE SOCIALE",
+				"description": "Évènement: Tu es passionnée par le changement social ? Tu as une initiative d’économie sociale que tu veux mettre en place ? Ou peut-être fais-tu partie d’une organisation à but non lucratif et cherches-tu à renforcer ta gouvernance pour accéder à davantage de financements ? Si c’est le cas, notre programme est fait pour toi ! ✨ ➡️ Voici les avantages : ⭐️ Structuration ou restructuration de ton organisation ⭐️ Accompagnement complet par notre réseau d’experts ⭐️ Acquisition d’outils de gestion essentiels ⭐️ Création d’une communauté d’entraide bienveillante ⭐️ Mise en commun des compétences pour répondre aux appels à projets ⭐️ Soutien technique pour l’incorporation, la recherche de financement, le recrutement et la gouvernance ⭐️ Support post-programme pendant 6 mois (conseils, comptabilité, promotion, réseautage…) Participe à la séance d’informations pour en savoir plus !",
+				"price": "Gratuit",
+				"link": "https://forms.zohopublic.com/startop/form/FormulairedInscriptionauProgrammeES/formperma/wev40hbcnFQIk2qyDK6y4HGPq9aP-d0DbKvi5kZipns"
+			}
+		]
+	},
+	"contacts": {
+		"phone_number": "514-458-0667",
+		"address": "251 Av. des Pins Ouest, Bureau 157, Montréal, QC H2W 1R5",
+		"website": "https://startop.ca/",
+		"socials": {
+			"facebook": "https://www.facebook.com/startopca",
+			"instagram": "https://instagram.com/startop.ca",
+			"linkedin": "https://www.linkedin.com/company/startopca/",
+			"youtube": "https://www.youtube.com/channel/UCl3l7RiYpiE2gyhmhXrkRRw"
+		}
+	}
+}

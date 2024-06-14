@@ -72,9 +72,9 @@ class ChatApp {
     const examples = this.description.examples;
     const mission = this.description["à propos"].mission;
     const vision = this.description["à propos"].vision;
-    const valeursFondamental = this.description["à propos"].valeurs_fondamentals;
+    const valeursFondamentales = this.description["à propos"].valeurs_fondamentales;
     const chronologie = this.description["à propos"].chronologie;
-    const team = this.description.team;
+    const equipe = this.description.équipe;
     const services = this.description.services;
     const coaching = this.description.services.coaching;
     const programmePivotEconomie = this.description.services.programme_pivot_économie;
@@ -82,23 +82,24 @@ class ChatApp {
     const redactionDuPlanDAffaires = this.description.services.rédaction_du_plan_d_affaires;
     const adhesion = this.description.services.adhésion;
     const publications = this.description.publications;
-    const events2023 = this.description.events["2023"];
-    const events2024 = this.description.events["2024"];
+    const events2023 = this.description.evenements["2023"];
+    const events2024 = this.description.evenements["2024"];
     const contacts = this.description.contacts;
-    const phoneNumber = this.description.contacts["phone_number"];
-    const address = this.description.contacts.address;
-    const website = this.description.contacts["website"];
-    const socials = this.description.contacts.socials;
-    const facebook = this.description.contacts.socials.Facebook;
-    const instagram = this.description.contacts.socials.instagram;
-    const linkedin = this.description.contacts.socials.linkedin;
-    const youtube = this.description.contacts.socials.YouTube;
+    const telephone = this.description.contacts.téléphone;
+    const adresse = this.description.contacts.adresse;
+    const siteWeb = this.description.contacts["site-web"];
+    const reseauxSociaux = this.description.contacts.réseaux_sociaux;
+    const facebook = this.description.contacts.réseaux_sociaux.Facebook;
+    const instagram = this.description.contacts.réseaux_sociaux.instagram;
+    const linkedin = this.description.contacts.réseaux_sociaux.linkedin;
+    const youtube = this.description.contacts.réseaux_sociaux.YouTube;
+
     console.log("Examples:", examples);
     console.log("Mission:", mission);
     console.log("Vision:", vision);
-    console.log("Valeurs Fondamentales:", valeursFondamental);
+    console.log("Valeurs Fondamentales:", valeursFondamentales);
     console.log("Chronologie:", chronologie);
-    console.log("Équipe:", team);
+    console.log("Équipe:", equipe);
     console.log("Coaching Service:", coaching);
     console.log("Programme Pivot Économie:", programmePivotEconomie);
     console.log("Aide à la Gouvernance:", aideALaGouvernance);
@@ -108,10 +109,10 @@ class ChatApp {
     console.log("Events 2023:", events2023);
     console.log("Events 2024:", events2024);
     console.log("Contacts:", contacts);
-    console.log("Téléphone:", phoneNumber);
-    console.log("Adresse:",   address);
-    console.log("Site Web:",  website);
-    console.log("Réseaux Sociaux:", socials);
+    console.log("Téléphone:", telephone);
+    console.log("Adresse:", adresse);
+    console.log("Site Web:", siteWeb);
+    console.log("Réseaux Sociaux:", reseauxSociaux);
     console.log("Facebook:", facebook);
     console.log("Instagram:", instagram);
     console.log("LinkedIn:", linkedin);
@@ -138,41 +139,18 @@ class ChatApp {
     const nowUtc = new Date();
 
     const currentDate = toZonedTime(nowUtc, "America/New_York");
+
     const historyGemini = [
         {
           role: "user",
           parts: [
-            { text: "quel est le dernier évènement de mai" },
+            { text: "quel est le dernier évènement" },
           ],
         },
         {
           role: "model",
           parts: [
-            { text: "Le dernier évènement de mai était l'AGA Startop : Initiation à la gouvernance, le 17 mai 2024." },
-          ],
-        },
-        {
-          role: "user",
-          parts: [
-            { text: "Je crois qu'il y a une erreur dans ta logique" },
-          ],
-        },
-        {
-          role: "model",
-          parts: [
-            { text: "Peux-tu me dire quelle erreur tu penses que j'ai faite ? Je ferai de mon mieux pour comprendre et corriger mon erreur. 😊" },
-          ],
-        },
-        {
-          role: "user",
-          parts: [
-            { text: "l'évènement dans le mois de mai, ce n'est pas le dernier" },
-          ],
-        },
-        {
-          role: "model",
-          parts: [
-            { text: "Tu as raison! L'évènement du 24 mai est après celui du 17 mai. Je m'excuse pour cette erreur. Que veux-tu savoir à propos de l'évènement du 24 mai ? 😊" },
+            { text: "Le dernier évènement était L’ENTREPRENEURIAT COLLECTIF FÉMININ le 13 juin 2024." },
           ],
         },
         {
@@ -197,7 +175,10 @@ class ChatApp {
             {
               text:
                 escapedDescription +
-                ` Je réponds avec une courte description, réponse très simple et courte seulement. Aujourd'hui est ${currentDate}. `  
+                " Je réponds avec une courte description, réponse très simple et courte seulement. Date actuelle: " +
+                currentDate +
+                " " +
+                "**Instructions:**  Réponds à mes questions sur les événements et les dates de Startop de manière concise et informative. Lorsque tu fournis des informations sur des dates, assure-toi que tes réponses sont pertinentes à l’heure actuelle. ",
             },
           ],
         },
@@ -205,7 +186,7 @@ class ChatApp {
           role: "model",
           parts: [
             {
-              text: `Je suis votre aide Startop et je répond à toutes vos questions en lien avec Startop. Aujourd'hui est ${currentDate}. Comment puis-je vous aider aujourd'hui ? 🚀`,
+              text: `Je suis votre aide Startop et je répond à toutes vos questions en lien avec Startop. Aujourd'hui est ${currentDate}. Je réponds en une phrase seulement avec une courte description, mes réponses sont très courtes et simples.`,
             },
           ],
         },
@@ -579,4 +560,4 @@ const ChatBotSimpleApi: React.FC = () => {
 
 export default ChatBotSimpleApi;
 //index.tsx version with the ChatBotSimpleApi component and the ChatApp class that fetches the description.json file and logs the data to the console
-// added historyGemini array to access the JSON data and description-eng.json file
+// added historyGemini array to access the JSON data
