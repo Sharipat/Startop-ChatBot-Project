@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { toZonedTime } from "date-fns-tz";
 import { marked } from "marked";
 import { Icon } from "@iconify/react";
@@ -9,6 +9,7 @@ interface ChatBubble {
   type: "question" | "response" | "error";
   text: string;
 }
+
 interface GenerationConfig {
   temperature: number;
   topP: number;
@@ -77,7 +78,7 @@ class ChatApp {
     const vision = this.description["à propos"].vision;
     const valeursFondamentales = this.description["à propos"].valeurs_fondamental;
     const chronologie = this.description["à propos"].chronologie;
-    const equipe = this.description.team;
+    const equipe = this.description["à propos"].team;
     const services = this.description.services;
     const coaching = this.description.services.coaching;
     const programmePivotEconomie = this.description.services.programme_pivot_économie;
@@ -259,7 +260,7 @@ const ChatBotSimpleApi: React.FC = () => {
   const styles: { [key: string]: React.CSSProperties } = {
     container: {
       position: "fixed",
-      bottom: "5%",
+      bottom: "3%",
       right: "1%",
       width: "40vw",
       height: "80vh",
@@ -274,9 +275,33 @@ const ChatBotSimpleApi: React.FC = () => {
       flexDirection: "column",
     },
     containerMinimized: {
-      width: "230px",
-      height: "90px",
-      overflow: "hidden",
+      position: "fixed",
+      bottom: "3%",
+      right: "1%",
+      width: "60px",
+      height: "60px",
+      backgroundColor: "black",
+      borderRadius: "50%",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      cursor: "pointer",
+      boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
+      zIndex: 1000,
+    },
+    notificationDot: {
+      position: "absolute",
+      top: "10px",
+      right: "10px",
+      width: "15px",
+      height: "15px",
+      backgroundColor: "red",
+      borderRadius: "50%",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      color: "white",
+      fontSize: "12px",
     },
     header: {
       fontWeight: "bold",
@@ -512,67 +537,76 @@ const ChatBotSimpleApi: React.FC = () => {
   };
 
   return (
-    <div
-      ref={containerRef}
-      style={{
-        ...styles.container,
-        ...(isMinimized ? styles.containerMinimized : {}),
-      }}
-    >
-      {!isMinimized && (
-        <div
-          ref={resizeHandleRef}
-          style={styles.resizeHandle}
-          onMouseDown={handleMouseDown}
-        ></div>
-      )}
-      <div style={styles.header}>
-        <div style={styles.logoContainer}>
-          <img src={logo.src} alt="Startop Logo" style={styles.logo} />
-          <span style={styles.headerTitle}></span>
+    <div>
+      {isMinimized ? (
+        <div style={styles.containerMinimized} onClick={handleMinimize}>
+          <Icon icon="ion:chatbubbles" width="30" height="30" color="white" />
+          <div style={styles.notificationDot}></div>
         </div>
-        <button onClick={handleMinimize} style={styles.minimizeButton}>
-          {isMinimized ? "➕" : "➖"}
-        </button>
-      </div>
-      {!isMinimized && (
-        <>
-          <div style={styles.messages} id="messages">
-            {messages.map((msg, index) => (
-              <div
-                key={index}
-                style={
-                  msg.type === "question" ? styles.userBubble : styles.botBubble
-                }
-                dangerouslySetInnerHTML={renderMarkdown(msg.text)}
-              />
-            ))}
-
-            <div ref={messagesEndRef} />
-          </div>
-          <div style={styles.inputContainer}>
-            <input
-              type="text"
-              id="chat-input"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              onKeyDown={handleKeyPress}
-              placeholder="Entrez votre message ici"
-              style={styles.input}
-              maxLength={250}
-            />
-            <button onClick={handleSendMessage} style={styles.button}>
-              <Icon icon="ion:send-sharp" width="26" height="26" />
+      ) : (
+        <div
+          ref={containerRef}
+          style={{
+            ...styles.container,
+            ...(isMinimized ? styles.containerMinimized : {}),
+          }}
+        >
+          {!isMinimized && (
+            <div
+              ref={resizeHandleRef}
+              style={styles.resizeHandle}
+              onMouseDown={handleMouseDown}
+            ></div>
+          )}
+          <div style={styles.header}>
+            <div style={styles.logoContainer}>
+              <img src={logo.src} alt="Startop Logo" style={styles.logo} />
+              <span style={styles.headerTitle}></span>
+            </div>
+            <button onClick={handleMinimize} style={styles.minimizeButton}>
+              {isMinimized ? "➕" : "➖"}
             </button>
           </div>
-        </>
-      )}
-      {isTyping && (
-        <div style={styles.typingIndicator}>
-          <span>L’assistant virtuel Startop est en train d'écrire...</span>
-          <span>.</span>
-          <span>.</span>
-          <span>.</span>
+          {!isMinimized && (
+            <>
+              <div style={styles.messages} id="messages">
+                {messages.map((msg, index) => (
+                  <div
+                    key={index}
+                    style={
+                      msg.type === "question" ? styles.userBubble : styles.botBubble
+                    }
+                    dangerouslySetInnerHTML={renderMarkdown(msg.text)}
+                  />
+                ))}
+
+                <div ref={messagesEndRef} />
+              </div>
+              <div style={styles.inputContainer}>
+                <input
+                  type="text"
+                  id="chat-input"
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  onKeyDown={handleKeyPress}
+                  placeholder="Entrez votre message ici"
+                  style={styles.input}
+                  maxLength={250}
+                />
+                <button onClick={handleSendMessage} style={styles.button}>
+                  <Icon icon="ion:send-sharp" width="26" height="26" />
+                </button>
+              </div>
+            </>
+          )}
+          {isTyping && (
+            <div style={styles.typingIndicator}>
+              <span>L’assistant virtuel Startop est en train d'écrire...</span>
+              <span>.</span>
+              <span>.</span>
+              <span>.</span>
+            </div>
+          )}
         </div>
       )}
     </div>
@@ -580,5 +614,6 @@ const ChatBotSimpleApi: React.FC = () => {
 };
 
 export default ChatBotSimpleApi;
+
 
 //index.tsx stable version with the ChatBotSimpleApi component 16/06/2024
