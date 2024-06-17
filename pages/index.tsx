@@ -4,6 +4,7 @@ import { marked } from "marked";
 import { Icon } from "@iconify/react";
 import logo from "../public/logo_startop.png";
 
+// Define interfaces
 interface ChatBubble {
   type: "question" | "response" | "error";
   text: string;
@@ -20,6 +21,8 @@ interface SafetySetting {
   category: string;
   threshold: string;
 }
+
+// ChatApp class definition
 class ChatApp {
   description: any; // Changed type to any to hold JSON object
   apiKey: string;
@@ -33,9 +36,9 @@ class ChatApp {
     this.apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent';
     this.generationConfig = {
       temperature: 0.1,
-      topP: 0.95,
+      topP: 0.9,
       topK: 64,
-      maxOutputTokens: 200,
+      maxOutputTokens: 1000,
       responseMimeType: "text/plain",
     };
     this.safetySettings = [
@@ -72,9 +75,9 @@ class ChatApp {
     const examples = this.description.examples;
     const mission = this.description["à propos"].mission;
     const vision = this.description["à propos"].vision;
-    const valeursFondamental = this.description["à propos"].valeurs_fondamentals;
+    const valeursFondamentales = this.description["à propos"].valeurs_fondamental;
     const chronologie = this.description["à propos"].chronologie;
-    const team = this.description.team;
+    const equipe = this.description.team;
     const services = this.description.services;
     const coaching = this.description.services.coaching;
     const programmePivotEconomie = this.description.services.programme_pivot_économie;
@@ -85,20 +88,21 @@ class ChatApp {
     const events2023 = this.description.events["2023"];
     const events2024 = this.description.events["2024"];
     const contacts = this.description.contacts;
-    const phoneNumber = this.description.contacts["phone_number"];
-    const address = this.description.contacts.address;
-    const website = this.description.contacts["website"];
-    const socials = this.description.contacts.socials;
-    const facebook = this.description.contacts.socials.Facebook;
+    const telephone = this.description.contacts.phone_number;
+    const adresse = this.description.contacts.address;
+    const siteWeb = this.description.contacts.website;
+    const reseauxSociaux = this.description.contacts.socials;
+    const Facebook = this.description.contacts.socials.facebook;
     const instagram = this.description.contacts.socials.instagram;
     const linkedin = this.description.contacts.socials.linkedin;
-    const youtube = this.description.contacts.socials.YouTube;
+    const YouTube = this.description.contacts.socials.youtube;
+
     console.log("Examples:", examples);
     console.log("Mission:", mission);
     console.log("Vision:", vision);
-    console.log("Valeurs Fondamentales:", valeursFondamental);
+    console.log("Valeurs Fondamentales:", valeursFondamentales);
     console.log("Chronologie:", chronologie);
-    console.log("Équipe:", team);
+    console.log("Équipe:", equipe);
     console.log("Coaching Service:", coaching);
     console.log("Programme Pivot Économie:", programmePivotEconomie);
     console.log("Aide à la Gouvernance:", aideALaGouvernance);
@@ -108,14 +112,14 @@ class ChatApp {
     console.log("Events 2023:", events2023);
     console.log("Events 2024:", events2024);
     console.log("Contacts:", contacts);
-    console.log("Téléphone:", phoneNumber);
-    console.log("Adresse:",   address);
-    console.log("Site Web:",  website);
-    console.log("Réseaux Sociaux:", socials);
-    console.log("Facebook:", facebook);
+    console.log("Téléphone:", telephone);
+    console.log("Adresse:", adresse);
+    console.log("Site Web:", siteWeb);
+    console.log("Réseaux Sociaux:", reseauxSociaux);
+    console.log("Facebook:", Facebook);
     console.log("Instagram:", instagram);
     console.log("LinkedIn:", linkedin);
-    console.log("YouTube:", youtube);
+    console.log("YouTube:", YouTube);
   }
 
   escapeString(str: string): string {
@@ -138,56 +142,45 @@ class ChatApp {
     const nowUtc = new Date();
 
     const currentDate = toZonedTime(nowUtc, "America/New_York");
+
     const historyGemini = [
-        {
-          role: "user",
-          parts: [
-            { text: "quel est le dernier évènement de mai" },
-          ],
-        },
-        {
-          role: "model",
-          parts: [
-            { text: "Le dernier évènement de mai était l'AGA Startop : Initiation à la gouvernance, le 17 mai 2024." },
-          ],
-        },
-        {
-          role: "user",
-          parts: [
-            { text: "Je crois qu'il y a une erreur dans ta logique" },
-          ],
-        },
-        {
-          role: "model",
-          parts: [
-            { text: "Peux-tu me dire quelle erreur tu penses que j'ai faite ? Je ferai de mon mieux pour comprendre et corriger mon erreur. 😊" },
-          ],
-        },
-        {
-          role: "user",
-          parts: [
-            { text: "l'évènement dans le mois de mai, ce n'est pas le dernier" },
-          ],
-        },
-        {
-          role: "model",
-          parts: [
-            { text: "Tu as raison! L'évènement du 24 mai est après celui du 17 mai. Je m'excuse pour cette erreur. Que veux-tu savoir à propos de l'évènement du 24 mai ? 😊" },
-          ],
-        },
-        {
-          role: "user",
-          parts: [
-            { text: "Quel date sommes-nous ?" },
-          ],
-        },
-        {
-          role: "model",
-          parts: [
-            { text: "Aujourd'hui, nous sommes le " + currentDate + "." },
-          ],
-        },
-      ];
+      {
+        role: "user",
+        parts: [
+          { text: "quel est le dernier évènement de mai" },
+        ],
+      },
+      {
+        role: "model",
+        parts: [
+          { text: "Le dernier évènement de mai était SÉANCE D’INFORMATIONS AU PROGRAMME : COHORTE RELÈVE EN ÉCONOMIE SOCIALE, le 24 mai 2024." },
+        ],
+      },
+      {
+        role: "user",
+        parts: [
+          { text: "quel est le dernier évènement" },
+        ],
+      },
+      {
+        role: "model",
+        parts: [
+          { text: "Le dernier évènement était L’ENTREPRENEURIAT COLLECTIF FÉMININ le 13 juin 2024." },
+        ],
+      },
+      {
+        role: "user",
+        parts: [
+          { text: "Quel date sommes-nous ?" },
+        ],
+      },
+      {
+        role: "model",
+        parts: [
+          { text: "Aujourd'hui, nous sommes le " + currentDate + "." },
+        ],
+      },
+    ];
     const requestBody = {
       contents: [
         ...historyGemini,
@@ -197,7 +190,10 @@ class ChatApp {
             {
               text:
                 escapedDescription +
-                ` Je réponds avec une courte description, réponse très simple et courte seulement. Aujourd'hui est ${currentDate}. `  
+                " Je réponds avec une courte description, réponse très simple et courte seulement. Date actuelle: " +
+                currentDate +
+                " " +
+                "**Instructions:**  Réponds à mes questions sur les événements et les dates de Startop de manière concise et informative. Lorsque tu fournis des informations sur des dates, assure-toi que tes réponses sont pertinentes à l’heure actuelle. ",
             },
           ],
         },
@@ -205,7 +201,7 @@ class ChatApp {
           role: "model",
           parts: [
             {
-              text: `Je suis votre aide Startop et je répond à toutes vos questions en lien avec Startop. Aujourd'hui est ${currentDate}. Comment puis-je vous aider aujourd'hui ? 🚀`,
+              text: `Je suis votre aide Startop et je répond à toutes vos questions en lien avec Startop. Aujourd'hui est ${currentDate}. Je réponds en une phrase seulement avec une courte description, mes réponses sont très courtes et simples.`,
             },
           ],
         },
@@ -253,17 +249,20 @@ const ChatBotSimpleApi: React.FC = () => {
   const [chatApp, setChatApp] = useState<ChatApp | null>(null);
   const [isMinimized, setIsMinimized] = useState<boolean>(false);
   const [isTyping, setIsTyping] = useState<boolean>(false);
+  const [dataLoaded, setDataLoaded] = useState(false);
+
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const resizeHandleRef = useRef<HTMLDivElement>(null);
 
+  // Styles object
   const styles: { [key: string]: React.CSSProperties } = {
     container: {
       position: "fixed",
       bottom: "5%",
-      right: "3%",
+      right: "1%",
       width: "40vw",
-      height: "70vh",
+      height: "80vh",
       backgroundColor: "#f1f4f6",
       boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
       borderRadius: "10px",
@@ -341,6 +340,7 @@ const ChatBotSimpleApi: React.FC = () => {
       border: "1px solid transparent",
       borderRadius: "15px 0 0 15px",
       fontSize: "18px",
+      outline: "none",
     },
     button: {
       padding: "10px",
@@ -372,6 +372,7 @@ const ChatBotSimpleApi: React.FC = () => {
       alignSelf: "flex-start",
       maxWidth: "80%",
       color: "#000000",
+      textAlign: "left",
     },
     resizeHandle: {
       position: "absolute",
@@ -403,6 +404,7 @@ const ChatBotSimpleApi: React.FC = () => {
     const app = new ChatApp();
     app.fetchDescription().then(() => {
       setChatApp(app);
+      setDataLoaded(true);
     });
 
     document.body.style.backgroundImage = "url(/startopcapture.png)";
@@ -432,7 +434,7 @@ const ChatBotSimpleApi: React.FC = () => {
   }, [messages]);
 
   const handleSendMessage = async () => {
-    if (inputValue.trim() !== "") {
+    if (inputValue.trim() !== "" && dataLoaded && chatApp) {
       const newUserMessage: ChatBubble = { type: "question", text: inputValue };
 
       setMessages((prevMessages) => [...prevMessages, newUserMessage]);
@@ -578,5 +580,5 @@ const ChatBotSimpleApi: React.FC = () => {
 };
 
 export default ChatBotSimpleApi;
-//index.tsx version with the ChatBotSimpleApi component and the ChatApp class that fetches the description.json file and logs the data to the console
-// added historyGemini array to access the JSON data and description-eng.json file
+
+//index.tsx stable version with the ChatBotSimpleApi component 16/06/2024

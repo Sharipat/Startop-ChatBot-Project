@@ -33,9 +33,9 @@ class ChatApp {
     this.apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent';
     this.generationConfig = {
       temperature: 0.1,
-      topP: 0.95,
+      topP: 0.9,
       topK: 64,
-      maxOutputTokens: 200,
+      maxOutputTokens: 1000,
       responseMimeType: "text/plain",
     };
     this.safetySettings = [
@@ -141,6 +141,18 @@ class ChatApp {
     const currentDate = toZonedTime(nowUtc, "America/New_York");
 
     const historyGemini = [
+      {
+        role: "user",
+        parts: [
+          { text: "quel est le dernier évènement de mai" },
+        ],
+      },
+      {
+        role: "model",
+        parts: [
+          { text: "Le dernier évènement de mai était SÉANCE D’INFORMATIONS AU PROGRAMME : COHORTE RELÈVE EN ÉCONOMIE SOCIALE, le 24 mai 2024." },
+        ],
+      },
         {
           role: "user",
           parts: [

@@ -1,6 +1,4 @@
-Here's an updated version of the JSON with the "longue-date" field formatted in French (e.g., "2024-05-17" formatted as "17 mai 2024") added to each event date:
 
-```json
 {
 	"examples": [
 		{
