@@ -34,7 +34,8 @@ class ChatApp {
   constructor() {
     this.description = null; // Initialize as null
     this.apiKey = process.env.NEXT_PUBLIC_API_KEY;
-    this.apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent';
+    this.apiUrl =
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent";
     this.generationConfig = {
       temperature: 0.1,
       topP: 0.9,
@@ -52,18 +53,18 @@ class ChatApp {
 
   async fetchDescription(): Promise<void> {
     try {
-      const response = await fetch('/description-eng.json');
+      const response = await fetch("/description-eng.json");
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const json = await response.json();
       this.description = json;
-      console.log('Description loaded:', this.description);
+      console.log("Description loaded:", this.description);
 
       // Access the JSON data here
       this.accessDescriptionData();
     } catch (err) {
-      console.error('Failed to load description:', err);
+      console.error("Failed to load description:", err);
     }
   }
 
@@ -76,14 +77,17 @@ class ChatApp {
     const examples = this.description.examples;
     const mission = this.description["à propos"].mission;
     const vision = this.description["à propos"].vision;
-    const valeursFondamentales = this.description["à propos"].valeurs_fondamental;
+    const valeursFondamentales =
+      this.description["à propos"].valeurs_fondamental;
     const chronologie = this.description["à propos"].chronologie;
     const equipe = this.description["à propos"].team;
     const services = this.description.services;
     const coaching = this.description.services.coaching;
-    const programmePivotEconomie = this.description.services.programme_pivot_économie;
+    const programmePivotEconomie =
+      this.description.services.programme_pivot_économie;
     const aideALaGouvernance = this.description.services.aide_à_la_gouvernance;
-    const redactionDuPlanDAffaires = this.description.services.rédaction_du_plan_d_affaires;
+    const redactionDuPlanDAffaires =
+      this.description.services.rédaction_du_plan_d_affaires;
     const adhesion = this.description.services.adhésion;
     const publications = this.description.publications;
     const events2023 = this.description.events["2023"];
@@ -133,8 +137,13 @@ class ChatApp {
       .replace(/\t/g, "\\t");
   }
 
-  async sendMessage(inputText: string, conversationHistory: ChatBubble[]): Promise<string> {
-    const escapedDescription = this.escapeString(JSON.stringify(this.description));
+  async sendMessage(
+    inputText: string,
+    conversationHistory: ChatBubble[]
+  ): Promise<string> {
+    const escapedDescription = this.escapeString(
+      JSON.stringify(this.description)
+    );
     const escapedInputText = this.escapeString(inputText);
     const escapedHistory = conversationHistory.map((bubble) => ({
       ...bubble,
@@ -147,39 +156,35 @@ class ChatApp {
     const historyGemini = [
       {
         role: "user",
-        parts: [
-          { text: "quel est le dernier évènement de mai" },
-        ],
+        parts: [{ text: "quel est le dernier évènement de mai" }],
       },
       {
         role: "model",
         parts: [
-          { text: "Le dernier évènement de mai était SÉANCE D’INFORMATIONS AU PROGRAMME : COHORTE RELÈVE EN ÉCONOMIE SOCIALE, le 24 mai 2024." },
+          {
+            text: "Le dernier évènement de mai était SÉANCE D’INFORMATIONS AU PROGRAMME : COHORTE RELÈVE EN ÉCONOMIE SOCIALE, le 24 mai 2024.",
+          },
         ],
       },
       {
         role: "user",
-        parts: [
-          { text: "quel est le dernier évènement" },
-        ],
+        parts: [{ text: "quel est le dernier évènement" }],
       },
       {
         role: "model",
         parts: [
-          { text: "Le dernier évènement était L’ENTREPRENEURIAT COLLECTIF FÉMININ le 13 juin 2024." },
+          {
+            text: "Le dernier évènement était L’ENTREPRENEURIAT COLLECTIF FÉMININ le 13 juin 2024.",
+          },
         ],
       },
       {
         role: "user",
-        parts: [
-          { text: "Quel date sommes-nous ?" },
-        ],
+        parts: [{ text: "Quel date sommes-nous ?" }],
       },
       {
         role: "model",
-        parts: [
-          { text: "Aujourd'hui, nous sommes le " + currentDate + "." },
-        ],
+        parts: [{ text: "Aujourd'hui, nous sommes le " + currentDate + "." }],
       },
     ];
     const requestBody = {
@@ -226,7 +231,11 @@ class ChatApp {
       const data = await response.json();
       console.log("API response:", data);
 
-      if (!data.candidates || !data.candidates[0] || !data.candidates[0].content) {
+      if (
+        !data.candidates ||
+        !data.candidates[0] ||
+        !data.candidates[0].content
+      ) {
         throw new Error("Invalid API response structure");
       }
 
@@ -246,11 +255,14 @@ class ChatApp {
 const ChatBotSimpleApi: React.FC = () => {
   const [messages, setMessages] = useState<ChatBubble[]>([]);
   const [inputValue, setInputValue] = useState<string>("");
-  const [conversationHistory, setConversationHistory] = useState<ChatBubble[]>([]);
+  const [conversationHistory, setConversationHistory] = useState<ChatBubble[]>(
+    []
+  );
   const [chatApp, setChatApp] = useState<ChatApp | null>(null);
   const [isMinimized, setIsMinimized] = useState<boolean>(false);
   const [isTyping, setIsTyping] = useState<boolean>(false);
   const [dataLoaded, setDataLoaded] = useState(false);
+  const [showScrollButton, setShowScrollButton] = useState<boolean>(false);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -260,7 +272,7 @@ const ChatBotSimpleApi: React.FC = () => {
   const styles: { [key: string]: React.CSSProperties } = {
     container: {
       position: "fixed",
-      bottom: "3%",
+      bottom: "5%",
       right: "1%",
       width: "40vw",
       height: "80vh",
@@ -331,12 +343,7 @@ const ChatBotSimpleApi: React.FC = () => {
       fontStyle: "normal",
     },
     minimizeButton: {
-      backgroundColor: "transparent",
-      border: "none",
-      color: "white",
-      cursor: "pointer",
-      fontSize: "20px",
-      lineHeight: "20px",
+      display: "none", // Hide the minimize button
     },
     messages: {
       flex: 1,
@@ -423,6 +430,38 @@ const ChatBotSimpleApi: React.FC = () => {
       height: "16px",
       marginTop: "10px",
     },
+    scrollButton: {
+      position: "absolute",
+      left: "50%",
+      bottom: "25%",
+      transform: "translateX(-50%)",
+      backgroundColor: "#f9f9f8",
+      border: "none",
+      borderRadius: "50%",
+      color: "#000",
+      cursor: "pointer",
+      width: "30px",
+      height: "30px",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      boxShadow: "0 2px 10px rgba(0, 0, 0, 0.4)",
+    },
+    minimizeRoundButton: {
+      position: "absolute",
+      bottom: "10px",
+      right: "10px",
+      backgroundColor: "black",
+      borderRadius: "50%",
+      width: "40px",
+      height: "40px",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      cursor: "pointer",
+      boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
+      zIndex: 1001,
+    },
   };
 
   useEffect(() => {
@@ -455,8 +494,32 @@ const ChatBotSimpleApi: React.FC = () => {
     const messagesDiv = document.getElementById("messages");
     if (messagesDiv) {
       messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      messagesDiv.addEventListener("scroll", handleScroll);
     }
+
+    return () => {
+      if (messagesDiv) {
+        messagesDiv.removeEventListener("scroll", handleScroll);
+      }
+    };
   }, [messages]);
+
+  const handleScroll = () => {
+    const messagesDiv = document.getElementById("messages");
+    if (messagesDiv) {
+      const isScrolledToBottom =
+        messagesDiv.scrollHeight - messagesDiv.clientHeight <=
+        messagesDiv.scrollTop + 1;
+      setShowScrollButton(!isScrolledToBottom);
+    }
+  };
+
+  const scrollToBottom = () => {
+    const messagesDiv = document.getElementById("messages");
+    if (messagesDiv) {
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+  };
 
   const handleSendMessage = async () => {
     if (inputValue.trim() !== "" && dataLoaded && chatApp) {
@@ -540,7 +603,7 @@ const ChatBotSimpleApi: React.FC = () => {
     <div>
       {isMinimized ? (
         <div style={styles.containerMinimized} onClick={handleMinimize}>
-          <Icon icon="ion:chatbubbles" width="30" height="30" color="white" />
+          <Icon icon="uiw:message" width="30" height="30" color="white" />
           <div style={styles.notificationDot}></div>
         </div>
       ) : (
@@ -563,9 +626,6 @@ const ChatBotSimpleApi: React.FC = () => {
               <img src={logo.src} alt="Startop Logo" style={styles.logo} />
               <span style={styles.headerTitle}></span>
             </div>
-            <button onClick={handleMinimize} style={styles.minimizeButton}>
-              {isMinimized ? "➕" : "➖"}
-            </button>
           </div>
           {!isMinimized && (
             <>
@@ -574,7 +634,9 @@ const ChatBotSimpleApi: React.FC = () => {
                   <div
                     key={index}
                     style={
-                      msg.type === "question" ? styles.userBubble : styles.botBubble
+                      msg.type === "question"
+                        ? styles.userBubble
+                        : styles.botBubble
                     }
                     dangerouslySetInnerHTML={renderMarkdown(msg.text)}
                   />
@@ -607,6 +669,16 @@ const ChatBotSimpleApi: React.FC = () => {
               <span>.</span>
             </div>
           )}
+          {showScrollButton && (
+            <button style={styles.scrollButton} onClick={scrollToBottom}>
+              <Icon icon="ion:chevron-down-outline" width="26" height="26" />
+            </button>
+          )}
+        </div>
+      )}
+      {!isMinimized && (
+        <div style={styles.minimizeRoundButton} onClick={handleMinimize}>
+          <Icon icon="mdi:chevron-down" width="24" height="24" color="white" />
         </div>
       )}
     </div>
@@ -615,5 +687,4 @@ const ChatBotSimpleApi: React.FC = () => {
 
 export default ChatBotSimpleApi;
 
-
-//index.tsx stable version with the ChatBotSimpleApi component 16/06/2024
+//index.tsx 18/06/2024
