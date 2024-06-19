@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { toZonedTime } from "date-fns-tz";
 import { marked } from "marked";
 import { Icon } from "@iconify/react";
-import logo from "../public/logo_startop.png";
 
 // Define interfaces
 interface ChatBubble {
@@ -81,7 +80,6 @@ class ChatApp {
       this.description["à propos"].valeurs_fondamental;
     const chronologie = this.description["à propos"].chronologie;
     const equipe = this.description["à propos"].team;
-    const services = this.description.services;
     const coaching = this.description.services.coaching;
     const programmePivotEconomie =
       this.description.services.programme_pivot_économie;
@@ -259,7 +257,8 @@ const ChatBotSimpleApi: React.FC = () => {
     []
   );
   const [chatApp, setChatApp] = useState<ChatApp | null>(null);
-  const [isMinimized, setIsMinimized] = useState<boolean>(false);
+  const [isMinimized, setIsMinimized] = useState<boolean>(true);
+  const [isGreetingShown, setIsGreetingShown] = useState<boolean>(false);
   const [isTyping, setIsTyping] = useState<boolean>(false);
   const [dataLoaded, setDataLoaded] = useState(false);
   const [showScrollButton, setShowScrollButton] = useState<boolean>(false);
@@ -300,6 +299,7 @@ const ChatBotSimpleApi: React.FC = () => {
       cursor: "pointer",
       boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
       zIndex: 1000,
+      animation: "bounce 2s ease",
     },
     notificationDot: {
       position: "absolute",
@@ -319,7 +319,7 @@ const ChatBotSimpleApi: React.FC = () => {
       fontWeight: "bold",
       textAlign: "center",
       color: "#000",
-      backgroundColor: "transparent",
+      backgroundColor: "white",
       padding: "10px",
       borderRadius: "10px 10px 0 0",
       display: "flex",
@@ -327,9 +327,10 @@ const ChatBotSimpleApi: React.FC = () => {
       alignItems: "center",
     },
     logo: {
-      width: "60px",
-      height: "60px",
+      width: "50px",
+      height: "50px",
       marginRight: "15px",
+    
     },
     logoContainer: {
       display: "flex",
@@ -406,6 +407,15 @@ const ChatBotSimpleApi: React.FC = () => {
       color: "#000000",
       textAlign: "left",
     },
+    botIcon: {
+      marginLeft: "10px",
+      borderRadius: "50%",
+      border: "2px solid #000",
+      padding: "5px",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    },
     resizeHandle: {
       position: "absolute",
       top: "0",
@@ -424,7 +434,6 @@ const ChatBotSimpleApi: React.FC = () => {
       marginBottom: "10px",
       color: "#000",
       fontSize: "16px",
-      fontWeight: "bold",
       position: "relative",
       width: "100%",
       height: "16px",
@@ -471,6 +480,7 @@ const ChatBotSimpleApi: React.FC = () => {
       setDataLoaded(true);
     });
 
+
     document.body.style.backgroundImage = "url(/startopcapture.png)";
     document.body.style.backgroundSize = "cover";
     document.body.style.backgroundPosition = "center";
@@ -490,6 +500,34 @@ const ChatBotSimpleApi: React.FC = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const handleButtonClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.id === "btn-services") {
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { type: "question", text: "Parlez-moi de vos services." },
+        ]);
+      } else if (target.id === "btn-contact") {
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { type: "question", text: "Comment puis-je vous contacter?" },
+        ]);
+      } else if (target.id === "btn-events") {
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { type: "question", text: "Quels événements sont à venir?" },
+        ]);
+      }
+    };
+  
+    document.addEventListener("click", handleButtonClick);
+  
+    return () => {
+      document.removeEventListener("click", handleButtonClick);
+    };
+  }, [messages]);
+  
   useEffect(() => {
     const messagesDiv = document.getElementById("messages");
     if (messagesDiv) {
@@ -597,10 +635,39 @@ const ChatBotSimpleApi: React.FC = () => {
 
   const handleMinimize = () => {
     setIsMinimized(!isMinimized);
+    if (!isGreetingShown) {
+      setMessages([
+        ...messages,
+        {
+          type: "response",
+          text: `Bienvenue chez Startop! Comment puis-je vous aider aujourd'hui?
+                 <br /><button id="btn-services">Services</button>
+                 <button id="btn-contact">Contact</button>
+                 <button id="btn-events">Évènements</button>`,
+        },
+      ]);
+      setIsGreetingShown(true);
+    }
   };
 
-  return (
-    <div>
+  
+      return (
+  <div>
+    <style>
+      {`
+        @keyframes bounce {
+          0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+          }
+          40% {
+            transform: translateY(-10px);
+          }
+          60% {
+            transform: translateY(-5px);
+          }
+        }
+      `}
+    </style>
       {isMinimized ? (
         <div style={styles.containerMinimized} onClick={handleMinimize}>
           <Icon icon="uiw:message" width="30" height="30" color="white" />
@@ -623,8 +690,10 @@ const ChatBotSimpleApi: React.FC = () => {
           )}
           <div style={styles.header}>
             <div style={styles.logoContainer}>
-              <img src={logo.src} alt="Startop Logo" style={styles.logo} />
-              <span style={styles.headerTitle}></span>
+            <div style={styles.logo}>
+                <Icon icon="fluent:bot-sparkle-24-regular" width="40" height="40" color="black" />
+              </div>
+              <span style={styles.headerTitle}>StarBot</span>
             </div>
           </div>
           {!isMinimized && (
@@ -640,6 +709,7 @@ const ChatBotSimpleApi: React.FC = () => {
                     }
                     dangerouslySetInnerHTML={renderMarkdown(msg.text)}
                   />
+                  
                 ))}
 
                 <div ref={messagesEndRef} />
@@ -661,9 +731,9 @@ const ChatBotSimpleApi: React.FC = () => {
               </div>
             </>
           )}
-          {isTyping && (
+            {isTyping && (
             <div style={styles.typingIndicator}>
-              <span>L’assistant virtuel Startop est en train d'écrire...</span>
+              <span>StarBot est en train d'écrire</span>
               <span>.</span>
               <span>.</span>
               <span>.</span>
