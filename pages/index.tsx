@@ -197,7 +197,7 @@ class ChatApp {
                 " Je réponds avec une courte description, réponse très simple et courte seulement. Date actuelle: " +
                 currentDate +
                 " " +
-                "**Instructions:**  Réponds à mes questions sur les événements et les dates de Startop de manière concise et informative. Lorsque tu fournis des informations sur des dates, assure-toi que tes réponses sont pertinentes à l’heure actuelle. ",
+                "**Instructions:**  Réponds à mes questions sur les évènements et les dates de Startop de manière concise et informative. Lorsque tu fournis des informations sur des dates, assure-toi que tes réponses sont pertinentes à l’heure actuelle. ",
             },
           ],
         },
@@ -516,7 +516,7 @@ const ChatBotSimpleApi: React.FC = () => {
       } else if (target.id === "btn-events") {
         setMessages((prevMessages) => [
           ...prevMessages,
-          { type: "question", text: "Quels événements sont à venir?" },
+          { type: "question", text: "Quels évènements sont à venir?" },
         ]);
       }
     };
