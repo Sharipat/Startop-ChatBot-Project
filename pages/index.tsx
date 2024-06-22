@@ -7,34 +7,22 @@ import { Icon } from "@iconify/react";
 interface ChatBubble {
   type: "question" | "response" | "error";
   text: string;
-}
-
-interface GenerationConfig {
-  temperature: number;
-  topP: number;
-  topK: number;
-  maxOutputTokens: number;
-  responseMimeType: string;
-}
-
-interface SafetySetting {
-  category: string;
-  threshold: string;
+  label?: string; // Add label property
 }
 
 // ChatApp class definition
 class ChatApp {
-  description: any; // Changed type to any to hold JSON object
+  description: any;
   apiKey: string;
   apiUrl: string;
-  generationConfig: GenerationConfig;
-  safetySettings: SafetySetting[];
+  generationConfig: any;
+  safetySettings: any[];
 
   constructor() {
-    this.description = null; // Initialize as null
+    this.description = null;
     this.apiKey = process.env.NEXT_PUBLIC_API_KEY;
     this.apiUrl =
-      "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent";
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent";
     this.generationConfig = {
       temperature: 0.1,
       topP: 0.9,
@@ -59,70 +47,9 @@ class ChatApp {
       const json = await response.json();
       this.description = json;
       console.log("Description loaded:", this.description);
-
-      // Access the JSON data here
-      this.accessDescriptionData();
     } catch (err) {
       console.error("Failed to load description:", err);
     }
-  }
-
-  accessDescriptionData(): void {
-    if (!this.description) {
-      console.error("Description data not loaded");
-      return;
-    }
-
-    const examples = this.description.examples;
-    const mission = this.description["à propos"].mission;
-    const vision = this.description["à propos"].vision;
-    const valeursFondamentales =
-      this.description["à propos"].valeurs_fondamental;
-    const chronologie = this.description["à propos"].chronologie;
-    const equipe = this.description["à propos"].team;
-    const coaching = this.description.services.coaching;
-    const programmePivotEconomie =
-      this.description.services.programme_pivot_économie;
-    const aideALaGouvernance = this.description.services.aide_à_la_gouvernance;
-    const redactionDuPlanDAffaires =
-      this.description.services.rédaction_du_plan_d_affaires;
-    const adhesion = this.description.services.adhésion;
-    const publications = this.description.publications;
-    const events2023 = this.description.events["2023"];
-    const events2024 = this.description.events["2024"];
-    const contacts = this.description.contacts;
-    const telephone = this.description.contacts.phone_number;
-    const adresse = this.description.contacts.address;
-    const siteWeb = this.description.contacts.website;
-    const reseauxSociaux = this.description.contacts.socials;
-    const Facebook = this.description.contacts.socials.facebook;
-    const instagram = this.description.contacts.socials.instagram;
-    const linkedin = this.description.contacts.socials.linkedin;
-    const YouTube = this.description.contacts.socials.youtube;
-
-    console.log("Examples:", examples);
-    console.log("Mission:", mission);
-    console.log("Vision:", vision);
-    console.log("Valeurs Fondamentales:", valeursFondamentales);
-    console.log("Chronologie:", chronologie);
-    console.log("Équipe:", equipe);
-    console.log("Coaching Service:", coaching);
-    console.log("Programme Pivot Économie:", programmePivotEconomie);
-    console.log("Aide à la Gouvernance:", aideALaGouvernance);
-    console.log("Rédaction du Plan d'Affaires:", redactionDuPlanDAffaires);
-    console.log("Adhésion:", adhesion);
-    console.log("Publications:", publications);
-    console.log("Events 2023:", events2023);
-    console.log("Events 2024:", events2024);
-    console.log("Contacts:", contacts);
-    console.log("Téléphone:", telephone);
-    console.log("Adresse:", adresse);
-    console.log("Site Web:", siteWeb);
-    console.log("Réseaux Sociaux:", reseauxSociaux);
-    console.log("Facebook:", Facebook);
-    console.log("Instagram:", instagram);
-    console.log("LinkedIn:", linkedin);
-    console.log("YouTube:", YouTube);
   }
 
   escapeString(str: string): string {
@@ -148,7 +75,6 @@ class ChatApp {
       text: this.escapeString(bubble.text),
     }));
     const nowUtc = new Date();
-
     const currentDate = toZonedTime(nowUtc, "America/New_York");
 
     const historyGemini = [
@@ -262,6 +188,7 @@ const ChatBotSimpleApi: React.FC = () => {
   const [isTyping, setIsTyping] = useState<boolean>(false);
   const [dataLoaded, setDataLoaded] = useState(false);
   const [showScrollButton, setShowScrollButton] = useState<boolean>(false);
+  const [showButtons, setShowButtons] = useState<boolean>(true);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -325,12 +252,12 @@ const ChatBotSimpleApi: React.FC = () => {
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
+      marginBottom: "15px",
     },
     logo: {
       width: "50px",
       height: "50px",
       marginRight: "15px",
-    
     },
     logoContainer: {
       display: "flex",
@@ -342,9 +269,6 @@ const ChatBotSimpleApi: React.FC = () => {
       flexGrow: 1,
       fontSize: "25px",
       fontStyle: "normal",
-    },
-    minimizeButton: {
-      display: "none", // Hide the minimize button
     },
     messages: {
       flex: 1,
@@ -359,13 +283,6 @@ const ChatBotSimpleApi: React.FC = () => {
       display: "flex",
       marginTop: "auto",
       marginBottom: "15px",
-    },
-    inputWrapper: {
-      display: "flex",
-      alignItems: "center",
-      borderRadius: "15px",
-      border: "1px solid #ccc",
-      padding: "5px",
     },
     input: {
       flex: 1,
@@ -384,37 +301,27 @@ const ChatBotSimpleApi: React.FC = () => {
       cursor: "pointer",
       fontSize: "16px",
     },
-    buttonHover: {
-      backgroundColor: "#E65B53",
-    },
     userBubble: {
       backgroundColor: "#f2b950",
       borderRadius: "10px",
-      padding: "2px 5px",
-      margin: "10px 0",
+      padding: "10px 15px",
+      margin: "10px 0 5px", // Reduced gap
       alignSelf: "flex-end",
       maxWidth: "80%",
       textAlign: "right",
       color: "#000",
+      position: "relative",
     },
     botBubble: {
       backgroundColor: "#ffffff",
       borderRadius: "10px",
-      padding: "2px 5px",
-      margin: "10px 0",
+      padding: "10px 15px",
+      margin: "10px 0 5px", // Reduced gap
       alignSelf: "flex-start",
       maxWidth: "80%",
       color: "#000000",
       textAlign: "left",
-    },
-    botIcon: {
-      marginLeft: "10px",
-      borderRadius: "50%",
-      border: "2px solid #000",
-      padding: "5px",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
+      position: "relative",
     },
     resizeHandle: {
       position: "absolute",
@@ -471,15 +378,47 @@ const ChatBotSimpleApi: React.FC = () => {
       boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
       zIndex: 1001,
     },
+    buttonsContainer: {
+      display: "flex",
+      justifyContent: "center",
+      flexWrap: "wrap",
+      marginTop: "10px",
+    },
+    chatButton: {
+      margin: "5px",
+      padding: "10px 15px",
+      border: "1px solid #000",
+      borderRadius: "20px",
+      backgroundColor: "#fff",
+      cursor: "pointer",
+      fontSize: "14px",
+    },
+    userLabel: {
+      fontWeight: "bold",
+      fontSize: "14px",
+      marginBottom: "1px", // Reduced gap
+    },
+    botLabel: {
+      fontWeight: "bold",
+      fontSize: "14px",
+      marginBottom: "1px", // Reduced gap
+    },
+    messageContainer: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "flex-start",
+      position: "relative",
+      marginBottom: "20px",
+    },
   };
-
+  
   useEffect(() => {
+    console.log("Initial Messages State:", messages); // Log initial state
     const app = new ChatApp();
     app.fetchDescription().then(() => {
       setChatApp(app);
       setDataLoaded(true);
     });
-
 
     document.body.style.backgroundImage = "url(/startopcapture.png)";
     document.body.style.backgroundSize = "cover";
@@ -501,33 +440,56 @@ const ChatBotSimpleApi: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const handleButtonClick = (e: MouseEvent) => {
+    const handleButtonClick = async (e: MouseEvent) => {
       const target = e.target as HTMLElement;
+      let message = "";
+
       if (target.id === "btn-services") {
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          { type: "question", text: "Parlez-moi de vos services." },
-        ]);
+        message = "Parlez-moi de vos services.";
       } else if (target.id === "btn-contact") {
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          { type: "question", text: "Comment puis-je vous contacter?" },
-        ]);
+        message = "Comment puis-je vous contacter?";
       } else if (target.id === "btn-events") {
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          { type: "question", text: "Quels évènements sont à venir?" },
+        message = "Quels évènements sont à venir?";
+      } else if (target.id === "btn-team") {
+        message = "Parlez-moi de votre équipe.";
+      }
+
+      if (message && chatApp) {
+        setShowButtons(false);
+
+        const newUserMessage: ChatBubble = { type: "question", text: message };
+
+        setMessages((prevMessages) => [...prevMessages, newUserMessage]);
+        setConversationHistory((prevHistory) => [
+          ...prevHistory,
+          newUserMessage,
+        ]);
+
+        const responseText = await chatApp.sendMessage(message, [
+          ...conversationHistory,
+          newUserMessage,
+        ]);
+        const newBotMessage: ChatBubble = {
+          type: "response",
+          text: responseText,
+          label: "StarBot" // Ensure label is added for responses
+        };
+
+        setMessages((prevMessages) => [...prevMessages, newBotMessage]);
+        setConversationHistory((prevHistory) => [
+          ...prevHistory,
+          newBotMessage,
         ]);
       }
     };
-  
+
     document.addEventListener("click", handleButtonClick);
-  
+
     return () => {
       document.removeEventListener("click", handleButtonClick);
     };
-  }, [messages]);
-  
+  }, [messages, chatApp, conversationHistory]);
+
   useEffect(() => {
     const messagesDiv = document.getElementById("messages");
     if (messagesDiv) {
@@ -578,9 +540,14 @@ const ChatBotSimpleApi: React.FC = () => {
         const newBotMessage: ChatBubble = {
           type: "response",
           text: responseText,
+          label: "StarBot" // Add the label here for responses
         };
 
-        setMessages((prevMessages) => [...prevMessages, newBotMessage]);
+        setMessages((prevMessages) => {
+          const updatedMessages = [...prevMessages, newBotMessage];
+          console.log("Updated Messages after bot response:", updatedMessages); // Log the updated messages
+          return updatedMessages;
+        });
         setConversationHistory((prevHistory) => [
           ...prevHistory,
           newBotMessage,
@@ -632,42 +599,45 @@ const ChatBotSimpleApi: React.FC = () => {
       window.addEventListener("mouseup", handleMouseUp);
     }
   };
-
   const handleMinimize = () => {
     setIsMinimized(!isMinimized);
     if (!isGreetingShown) {
-      setMessages([
-        ...messages,
-        {
-          type: "response",
-          text: `Bienvenue chez Startop! Comment puis-je vous aider aujourd'hui?
-                 <br /><button id="btn-services">Services</button>
-                 <button id="btn-contact">Contact</button>
-                 <button id="btn-events">Évènements</button>`,
-        },
-      ]);
+      const greetingMessages: ChatBubble[] = [
+        { type: "response", text: "Bienvenue chez Startop!", label: "StarBot" },
+        { type: "response", text: "Comment puis-je vous aider aujourd'hui?", label: "StarBot" },
+      ];
+
+      greetingMessages.forEach((msg, index) => {
+        setTimeout(() => {
+          setMessages((prevMessages) => {
+            const newMessages = [...prevMessages, msg];
+            console.log("Updated Messages:", newMessages); // Log the updated messages
+            return newMessages;
+          });
+        }, index * 1000); // Adjust the delay as needed
+      });
+
       setIsGreetingShown(true);
     }
   };
 
-  
-      return (
-  <div>
-    <style>
-      {`
-        @keyframes bounce {
-          0%, 20%, 50%, 80%, 100% {
-            transform: translateY(0);
-          }
-          40% {
-            transform: translateY(-10px);
-          }
-          60% {
-            transform: translateY(-5px);
-          }
+  return (
+    <div>
+      <style>
+        {`
+      @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+          transform: translateY(0);
         }
-      `}
-    </style>
+        40% {
+          transform: translateY(-10px);
+        }
+        60% {
+          transform: translateY(-5px);
+        }
+      }
+    `}
+      </style>
       {isMinimized ? (
         <div style={styles.containerMinimized} onClick={handleMinimize}>
           <Icon icon="uiw:message" width="30" height="30" color="white" />
@@ -690,8 +660,13 @@ const ChatBotSimpleApi: React.FC = () => {
           )}
           <div style={styles.header}>
             <div style={styles.logoContainer}>
-            <div style={styles.logo}>
-                <Icon icon="fluent:bot-sparkle-24-regular" width="40" height="40" color="black" />
+              <div style={styles.logo}>
+                <Icon
+                  icon="fluent:bot-sparkle-24-regular"
+                  width="40"
+                  height="40"
+                  color="black"
+                />
               </div>
               <span style={styles.headerTitle}>StarBot</span>
             </div>
@@ -699,21 +674,50 @@ const ChatBotSimpleApi: React.FC = () => {
           {!isMinimized && (
             <>
               <div style={styles.messages} id="messages">
-                {messages.map((msg, index) => (
-                  <div
-                    key={index}
-                    style={
-                      msg.type === "question"
-                        ? styles.userBubble
-                        : styles.botBubble
-                    }
-                    dangerouslySetInnerHTML={renderMarkdown(msg.text)}
-                  />
-                  
-                ))}
-
+                {messages.map((msg, index) => {
+                  console.log("Rendering message:", msg); // Log each message being rendered
+                  return (
+                    <div
+                      key={index}
+                      style={{
+                        ...styles.messageContainer,
+                        alignItems: msg.type === "question" ? "flex-end" : "flex-start",
+                      }}
+                    >
+                      <div
+                        style={
+                          msg.type === "question" ? styles.userLabel : styles.botLabel
+                        }
+                      >
+                        {msg.label || (msg.type === "question" ? "Vous" : "StarBot")}
+                      </div>
+                      <div
+                        style={
+                          msg.type === "question" ? styles.userBubble : styles.botBubble
+                        }
+                        dangerouslySetInnerHTML={renderMarkdown(msg.text)}
+                      />
+                    </div>
+                  );
+                })}
                 <div ref={messagesEndRef} />
               </div>
+              {showButtons && (
+                <div style={styles.buttonsContainer}>
+                  <button id="btn-services" style={styles.chatButton}>
+                    Services
+                  </button>
+                  <button id="btn-contact" style={styles.chatButton}>
+                    Contact
+                  </button>
+                  <button id="btn-events" style={styles.chatButton}>
+                    Évènements
+                  </button>
+                  <button id="btn-team" style={styles.chatButton}>
+                    Équipe
+                  </button>
+                </div>
+              )}
               <div style={styles.inputContainer}>
                 <input
                   type="text"
@@ -731,7 +735,7 @@ const ChatBotSimpleApi: React.FC = () => {
               </div>
             </>
           )}
-            {isTyping && (
+          {isTyping && (
             <div style={styles.typingIndicator}>
               <span>StarBot est en train d'écrire</span>
               <span>.</span>
@@ -756,5 +760,3 @@ const ChatBotSimpleApi: React.FC = () => {
 };
 
 export default ChatBotSimpleApi;
-
-//index.tsx 18/06/2024
