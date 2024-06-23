@@ -6,6 +6,13 @@ export interface ChatBubble {
   label?: string;
 }
 
+interface Service {
+  type: string;
+  description: string;
+  price: string;
+  emoji: string;
+}
+
 class ChatApp {
   description: any;
   apiKey: string;
@@ -19,7 +26,7 @@ class ChatApp {
     this.apiUrl =
       "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent";
     this.generationConfig = {
-      temperature: 0.1,
+      temperature: 0.5, // Increase temperature for more creativity
       topP: 0.9,
       topK: 64,
       maxOutputTokens: 1000,
@@ -55,6 +62,39 @@ class ChatApp {
       .replace(/\n/g, "")
       .replace(/\r/g, "\\r")
       .replace(/\t/g, "\\t");
+  }
+
+  getServices(): string[] {
+    if (this.description && this.description.services) {
+      return Object.values(this.description.services).map(
+        (service: Service) => `• ${service.emoji} ${service.type}`
+      );
+    }
+    return [];
+  }
+
+  getServiceDetails(emoji: string): Service | undefined {
+    if (this.description && this.description.services) {
+      return (Object.values(this.description.services) as Service[]).find(
+        (service) => service.emoji === emoji
+      );
+    }
+    return undefined;
+  }
+
+  getContactInfo(method: string): string {
+    if (this.description && this.description.contacts) {
+      const contactInfo = this.description.contacts[method];
+      return contactInfo ? `${method}: ${contactInfo}` : "Méthode de contact non disponible.";
+    }
+    return "Les informations de contact ne sont pas disponibles.";
+  }
+
+  getSocialLink(network: string): string | undefined {
+    if (this.description && this.description.contacts && this.description.contacts.socials) {
+      return this.description.contacts.socials[network.toLowerCase()];
+    }
+    return undefined;
   }
 
   async sendMessage(
@@ -106,6 +146,7 @@ class ChatApp {
         parts: [{ text: "Aujourd'hui, nous sommes le " + currentDate + "." }],
       },
     ];
+
     const requestBody = {
       contents: [
         ...historyGemini,
@@ -161,7 +202,14 @@ class ChatApp {
       const responseText = data.candidates[0].content.parts
         .map((part: any) => part.text)
         .join(" ");
-      return responseText;
+
+      // Post-process to make the response more conversational
+      const formattedResponse = responseText.replace(
+        /\b(Startop|service)\b/g,
+        match => (match === "Startop" ? "Startop" : "service")
+      );
+
+      return formattedResponse;
     } catch (error) {
       console.error("Error:", error);
       return "Il y a eu un problème de connexion au chatbot. Veuillez réessayer plus tard.";

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Icon } from '@iconify/react'; // Add this import
+import { Icon } from '@iconify/react';
 import ChatApp, { ChatBubble } from './ChatApp';
 import Header from './components/Header';
 import Messages from './components/Messages';
@@ -17,6 +17,8 @@ const ChatBotSimpleApi: React.FC = () => {
   const [dataLoaded, setDataLoaded] = useState(false);
   const [showScrollButton, setShowScrollButton] = useState<boolean>(false);
   const [showButtons, setShowButtons] = useState<boolean>(true);
+  const [showServiceButtons, setShowServiceButtons] = useState<boolean>(false);
+  const [showContactOptions, setShowContactOptions] = useState<boolean>(false);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -54,35 +56,36 @@ const ChatBotSimpleApi: React.FC = () => {
       let message = "";
 
       if (target.id === "btn-services") {
-        message = "Parlez-moi de vos services.";
+        if (chatApp) {
+          const services = chatApp.getServices();
+          const formattedServices = services.join("\n");
+          message = `Voici nos services:\n${formattedServices}\nQuel service souhaitez-vous connaître?`;
+          setShowServiceButtons(true);
+        }
       } else if (target.id === "btn-contact") {
-        message = "Comment puis-je vous contacter?";
-      } else if (target.id === "btn-events") {
-        message = "Quels évènements sont à venir?";
-      } else if (target.id === "btn-team") {
-        message = "Parlez-moi de votre équipe.";
+        message = "Il y a plusieurs façons de contacter Startop. Laquelle choisissez-vous ?";
+        setShowContactOptions(true);
+        setShowButtons(false);
+      } else if (target.dataset.service) {
+        const serviceEmoji = target.dataset.service;
+        if (chatApp) {
+          const service = chatApp.getServiceDetails(serviceEmoji);
+          if (service) {
+            message = `${service.type}: ${service.description} Coût: ${service.price}`;
+            setShowServiceButtons(false);
+          }
+        }
+      } else if (target.dataset.contactMethod) {
+        if (chatApp) {
+          const method = target.dataset.contactMethod;
+          const contactInfo = chatApp.getContactInfo(method);
+          message = contactInfo;
+          setShowContactOptions(false);
+        }
       }
 
       if (message && chatApp) {
-        setShowButtons(false);
-
-        const newUserMessage: ChatBubble = { type: "question", text: message };
-
-        setMessages((prevMessages) => [...prevMessages, newUserMessage]);
-        setConversationHistory((prevHistory) => [
-          ...prevHistory,
-          newUserMessage,
-        ]);
-
-        const responseText = await chatApp.sendMessage(message, [
-          ...conversationHistory,
-          newUserMessage,
-        ]);
-        const newBotMessage: ChatBubble = {
-          type: "response",
-          text: responseText,
-          label: "StarBot" // Ensure label is added for responses
-        };
+        const newBotMessage: ChatBubble = { type: "response", text: message, label: "StarBot" };
 
         setMessages((prevMessages) => [...prevMessages, newBotMessage]);
         setConversationHistory((prevHistory) => [
@@ -147,7 +150,7 @@ const ChatBotSimpleApi: React.FC = () => {
         const newBotMessage: ChatBubble = {
           type: "response",
           text: responseText,
-          label: "StarBot" // Add the label here for responses
+          label: "StarBot"
         };
 
         setMessages((prevMessages) => {
@@ -259,8 +262,34 @@ const ChatBotSimpleApi: React.FC = () => {
                   <button id="btn-events" className={styles.chatButton}>
                     Évènements
                   </button>
-                  <button id="btn-team" className={styles.chatButton}>
-                    Équipe
+                  <button id="btn-ask-question" className={styles.chatButton}>
+                    Poser la question
+                  </button>
+                </div>
+              )}
+              {showServiceButtons && chatApp && (
+                <div className={styles.buttonsContainer}>
+                  {Object.values(chatApp.description.services).map((service: any, index: number) => (
+                    <button
+                      key={index}
+                      data-service={service.emoji}
+                      className={styles.chatButton}
+                    >
+                      {service.emoji}
+                    </button>
+                  ))}
+                </div>
+              )}
+              {showContactOptions && (
+                <div className={styles.buttonsContainer}>
+                  <button data-contact-method="address" className={styles.chatButton}>
+                    Adresse
+                  </button>
+                  <button data-contact-method="phone_number" className={styles.chatButton}>
+                    Cellulaire
+                  </button>
+                  <button data-contact-method="socials" className={styles.chatButton}>
+                    Réseaux sociaux
                   </button>
                 </div>
               )}

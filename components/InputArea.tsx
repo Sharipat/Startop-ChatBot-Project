@@ -27,6 +27,8 @@ const InputArea: React.FC<InputAreaProps> = ({ onSendMessage }) => {
     <div className={styles.inputContainer}>
       <input
         type="text"
+        id="userInput"
+        name="userInput"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
         onKeyDown={handleKeyPress}
