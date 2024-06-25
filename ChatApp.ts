@@ -1,3 +1,4 @@
+import { isAfter } from "date-fns";
 import { toZonedTime } from "date-fns-tz";
 
 export interface ChatBubble {
@@ -148,26 +149,97 @@ class ChatApp {
     }
     return undefined;
   }
+  public findNextEvent(events: any[]): any | undefined {
+    const currentDate = toZonedTime(new Date(), 'America/New_York');
 
-  async sendMessage(inputText: string): Promise<string> { 
+    for (const event of events) {
+      const eventDate = toZonedTime(new Date(event.date), 'America/New_York');
+      if (isAfter(eventDate, currentDate)) { // Check if event date is after current date
+        return event;
+      }
+    }
+    return undefined;
+  }
+
+  public getLastEventDetails(): any | undefined {
+    const lastEventId = this.description.lastEvent;
+    if (lastEventId) {
+      return this.description.events[lastEventId];
+    }
+    return undefined; // Handle the case where lastEvent is not found 
+  }
+  public addToConversationHistory(message: ChatBubble) {
+    this.conversationHistory.push(message);
+  }
+  async sendMessage(inputText: string): Promise<string> {
     const escapedInputText = this.escapeString(inputText);
-    const newUserMessage: ChatBubble = { 
-      type: 'question', 
-      text: escapedInputText 
+    const newUserMessage: ChatBubble = {
+      type: 'question',
+      text: escapedInputText
     };
-
-    this.conversationHistory.push(newUserMessage); // Add the new user message to history 
-
-    const nowUtc = new Date();
-    const currentDate = toZonedTime(nowUtc, 'America/New_York'); 
-
-    const requestBody = {
-      contents: [
-        ...this.conversationHistory.map((bubble) => ({ // Use the conversation history
-          role: bubble.type === 'question' || bubble.type === 'system' ? 'user' : 'model', 
-          parts: [{ text: bubble.text }],
-        })),
-      ],
+    this.conversationHistory.push(newUserMessage);
+  
+    // Check if the last message was a button click:
+    const lastMessage = this.conversationHistory[this.conversationHistory.length - 1];
+    let responseText = "";
+  
+    if (lastMessage && lastMessage.type === 'question' && lastMessage.text.startsWith('User clicked:')) {
+      const buttonId = lastMessage.text.replace('User clicked: ', '').trim();
+  
+      if (buttonId === 'btn-services') {
+        const services = this.getServices();
+        const formattedServices = services.join("\n\n");
+        responseText = `Voici nos services:\n${formattedServices}\nQuel service souhaitez-vous connaître?`;
+      } else if (buttonId === 'btn-contact') {
+        responseText = "Il y a plusieurs façons de contacter Startop. Laquelle choisissez-vous ?";
+      } else if (buttonId === 'btn-events') {
+        responseText = "Quel événement souhaitez-vous connaître ?";
+      } else if (buttonId === 'btn-ask-question') {
+        responseText = "Nous sommes heureux de vous aider! Veuillez poser votre question dans le champ de saisie ci-dessous.";
+      } else if (buttonId === 'btn-prochain-event') {
+        const nextEvent = this.findNextEvent(this.description.events);
+        responseText = nextEvent ? `Le prochain événement est ${nextEvent.title}, le ${nextEvent.longDate}.` : "Pour le moment, nous mettons la touche finale à la programmation de nos prochains événements. Je vous invite à consulter ...";
+      } else if (buttonId === 'btn-dernier-event') {
+        const lastEvent = this.getLastEventDetails();
+        responseText = lastEvent ? `Le dernier événement était ${lastEvent.title}, le ${lastEvent.longDate}.` : "Il semble que nous n'ayons pas encore organisé d'événements. Restez à l'écoute pour les annonces futures!";
+      } else if (buttonId.startsWith('data-service-')) {
+        const serviceEmoji = buttonId.replace('data-service-', '').trim();
+        const service = this.getServiceDetails(serviceEmoji);
+        if (service) {
+          responseText = `${service.type}: ${service.description} Coût: ${service.price}.`;
+        }
+      } else if (buttonId.startsWith('data-contact-method-')) {
+        const contactMethod = buttonId.replace('data-contact-method-', '').trim();
+        const contactInfo = this.getContactInfo(contactMethod);
+        responseText = `Voici les informations de contact pour ${contactMethod} : ${contactInfo}.`;
+      } else if (buttonId.startsWith('data-social-platform-')) {
+        const platform = buttonId.replace('data-social-platform-', '').trim();
+        const link = this.getSocialLink(platform);
+        responseText = link ? `Voici le lien pour notre ${platform}: ${link}.` : `Je ne trouve pas le lien pour notre ${platform} pour le moment.`;
+      } else if (buttonId === 'btn-other-event') {
+        responseText = "Veuillez poser votre question à propos d'un autre événement.";
+      } else if (buttonId === 'btn-return') {
+        responseText = "Ok, retournons à la liste principale des options.";
+      } else if (buttonId === 'btn-no-thanks') {
+        responseText = "D'accord, si vous avez d'autres questions, n'hésitez pas à demander!";
+      } else if (buttonId === 'btn-yes-please') {
+        responseText = "Que souhaitez-vous savoir d'autre?";
+      }
+  
+    } else {
+      // Handle text input:
+      const nowUtc = new Date();
+      const currentDate = toZonedTime(nowUtc, 'America/New_York');
+  
+      const requestBody = {
+        contents: [
+          // Include the system message:
+          ...[this.initializeConversation()],
+        ...this.conversationHistory.map((bubble) => ({
+          role: bubble.type === 'question' || bubble.type === 'system' ? 'user' : 'model',
+            parts: [{ text: bubble.text }],
+          })),
+        ],
       generationConfig: this.generationConfig,
       safetySettings: this.safetySettings,
     };
@@ -199,20 +271,20 @@ class ChatApp {
           match === "Startop" ? "Startop" : "service"
         );
 
-        this.conversationHistory.push({ 
-          type: 'response', 
+        this.conversationHistory.push({
+          type: 'response',
           text: formattedResponse,
           label: 'StarBot'
         });
+    
+        return formattedResponse;
 
-      return formattedResponse;
     } catch (error) {
       console.error("Error:", error);
       return "Il y a eu un problème de connexion au chatbot. Veuillez réessayer plus tard.";
     }
   }
-  public addToConversationHistory(message: ChatBubble) {
-    this.conversationHistory.push(message);
+ 
   }
 
   isEventRelatedQuestion(inputText: string): boolean {
@@ -236,6 +308,7 @@ class ChatApp {
   getSocialMediaOptions(): string {
     return "Quel réseau social voulez-vous connaître? Facebook, Instagram, LinkedIn, YouTube";
   }
+  
 }
 
 export default ChatApp;

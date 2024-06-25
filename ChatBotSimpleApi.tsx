@@ -91,10 +91,10 @@ const ChatBotSimpleApi: React.FC = () => {
               { type: "response", text: followUpMessage, label: "StarBot" }
             ];
             setMessages((prevMessages) => [...prevMessages, ...newBotMessages]);
-            setConversationHistory((prevHistory) => [
-              ...prevHistory,
-              ...newBotMessages
-            ]);
+            // Removed: setConversationHistory((prevHistory) => [
+            //   ...prevHistory,
+            //   ...newBotMessages
+            // ]);
           }
         }
       } else if (target.dataset.contactMethod) {
@@ -112,10 +112,10 @@ const ChatBotSimpleApi: React.FC = () => {
               { type: "response", text: followUpMessage, label: "StarBot" }
             ];
             setMessages((prevMessages) => [...prevMessages, ...newBotMessages]);
-            setConversationHistory((prevHistory) => [
-              ...prevHistory,
-              ...newBotMessages
-            ]);
+            // Removed: setConversationHistory((prevHistory) => [
+            //   ...prevHistory,
+            //   ...newBotMessages
+            // ]);
             setShowContactOptions(false);
             setShowFollowUpButtons(true);
           }
@@ -130,10 +130,10 @@ const ChatBotSimpleApi: React.FC = () => {
             { type: "response", text: followUpMessage, label: "StarBot" }
           ];
           setMessages((prevMessages) => [...prevMessages, ...newBotMessages]);
-          setConversationHistory((prevHistory) => [
-            ...prevHistory,
-            ...newBotMessages
-          ]);
+          // Removed: setConversationHistory((prevHistory) => [
+          //   ...prevHistory,
+          //   ...newBotMessages
+          // ]);
           setShowSocialPlatformOptions(false);
           setShowFollowUpButtons(true);
         }
@@ -148,10 +148,10 @@ const ChatBotSimpleApi: React.FC = () => {
             { type: "response", text: followUpMessage, label: "StarBot" }
           ];
           setMessages((prevMessages) => [...prevMessages, ...newBotMessages]);
-          setConversationHistory((prevHistory) => [
-            ...prevHistory,
-            ...newBotMessages
-          ]);
+          // Removed: setConversationHistory((prevHistory) => [
+          //   ...prevHistory,
+          //   ...newBotMessages
+          // ]);
           setShowEventOptions(false);
           setShowFollowUpButtons(true);
         }
@@ -168,12 +168,12 @@ const ChatBotSimpleApi: React.FC = () => {
       } else if (target.id === "btn-no-thanks") {
         const newBotMessage: ChatBubble = { type: "response", text: "D'accord, si vous avez d'autres questions, n'hésitez pas à demander!", label: "StarBot" };
         setMessages((prevMessages) => [...prevMessages, newBotMessage]);
-        setConversationHistory((prevHistory) => [...prevHistory, newBotMessage]);
+        // Removed: setConversationHistory((prevHistory) => [...prevHistory, newBotMessage]);
         setShowFollowUpButtons(false);
       } else if (target.id === "btn-yes-please") {
         const newBotMessage: ChatBubble = { type: "response", text: "Que souhaitez-vous savoir d'autre ?", label: "StarBot" };
         setMessages((prevMessages) => [...prevMessages, newBotMessage]);
-        setConversationHistory((prevHistory) => [...prevHistory, newBotMessage]);
+        // Removed: setConversationHistory((prevHistory) => [...prevHistory, newBotMessage]);
         setShowFollowUpButtons(false);
       }
 
@@ -181,10 +181,10 @@ const ChatBotSimpleApi: React.FC = () => {
         const newBotMessage: ChatBubble = { type: "response", text: message, label: "StarBot" };
 
         setMessages((prevMessages) => [...prevMessages, newBotMessage]);
-        setConversationHistory((prevHistory) => [
-          ...prevHistory,
-          newBotMessage,
-        ]);
+        // Removed: setConversationHistory((prevHistory) => [
+        //   ...prevHistory,
+        //   newBotMessage,
+        // ]);
         chatApp.addToConversationHistory(newBotMessage);
       }
     };
@@ -194,7 +194,7 @@ const ChatBotSimpleApi: React.FC = () => {
     return () => {
       document.removeEventListener("click", handleButtonClick);
     };
-  }, [messages, chatApp, conversationHistory]);
+  }, [messages, chatApp]);
 
   useEffect(() => {
     const messagesDiv = document.getElementById("messages");
@@ -228,34 +228,31 @@ const ChatBotSimpleApi: React.FC = () => {
   };
 
   const handleSendMessage = async (inputValue: string) => {
-    if (inputValue.trim() !== "" && dataLoaded && chatApp) {
+    if (inputValue.trim() !== "" && chatApp) {
+      // Create a user "question" ChatBubble
       const newUserMessage: ChatBubble = { type: "question", text: inputValue };
-
-      setMessages((prevMessages) => [...prevMessages, newUserMessage]);
-      setConversationHistory((prevHistory) => [...prevHistory, newUserMessage]);
-
-      if (chatApp) {
-        setIsTyping(true);
-
-        // In handleSendMessage()
-const responseText = await chatApp.sendMessage(inputValue); // No need to pass conversationHistory
-        const newBotMessage: ChatBubble = {
-          type: "response",
-          text: responseText,
-          label: "StarBot"
-        };
-
-        setMessages((prevMessages) => {
-          const updatedMessages = [...prevMessages, newBotMessage];
-          return updatedMessages;
-        });
-        setConversationHistory((prevHistory) => [
-          ...prevHistory,
-          newBotMessage,
-        ]);
-
-        setIsTyping(false);
-      }
+      
+      // Update UI messages and ChatApp conversation history
+      setMessages((prevMessages) => [...prevMessages, newUserMessage]); 
+      chatApp.addToConversationHistory(newUserMessage);
+  
+      setIsTyping(true); // Show typing indicator
+  
+      // Get the response from the chatbot
+      const responseText = await chatApp.sendMessage(inputValue); 
+      
+      // Create a bot response ChatBubble
+      const newBotMessage: ChatBubble = {
+        type: "response",
+        text: responseText,
+        label: "StarBot"
+      };
+  
+      // Update UI messages and ChatApp conversation history
+      setMessages((prevMessages) => [...prevMessages, newBotMessage]);
+      chatApp.addToConversationHistory(newBotMessage);
+  
+      setIsTyping(false); // Hide typing indicator
     }
   };
 
