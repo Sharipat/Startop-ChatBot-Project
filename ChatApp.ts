@@ -1,3 +1,4 @@
+
 import { isAfter } from "date-fns";
 import { toZonedTime } from "date-fns-tz";
 
@@ -43,9 +44,7 @@ class ChatApp {
     ];
 
     // Check for updates in JSON data every 3 hours
-    setInterval(() => {
-      this.fetchDescription();
-    }, 3 * 60 * 60 * 1000);
+   
   }
   private initializeConversation() {
     const currentDate = toZonedTime(new Date(), 'America/New_York');
@@ -53,40 +52,41 @@ class ChatApp {
 
     const systemMessage: ChatBubble = {
       type: 'system',
-      text: `${escapedDescription} Réponds de manière amicale et invitante. Ajoute des questions de suivi pour maintenir le flux de la conversation. Date actuelle: ${currentDate}.
-    
-      **Instructions:**
-      - Tu es StarBot, l'assistant virtuel de Startop.
+      text: `Réponds de manière amicale et invitante. Ajoute des questions de suivi pour maintenir le flux de la conversation. Date actuelle: ${currentDate}.
+
+- Tu es StarBot, l'assistant virtuel de Startop.
       - Ta mission est d'aider les utilisateurs à en savoir plus sur Startop, ses services, ses événements, son équipe, et ses publications. 
       - Réponds à mes questions sur les services, les événements, les membres de l'équipe, les publications et les méthodes de contact de Startop. 
       - Fournis des réponses concises mais incluant des détails spécifiques (prix des services, dates des événements, liens vers des ressources, rôles des membres de l'équipe, descriptions des publications).
       - Pose des questions de suivi pour guider la conversation et approfondir les besoins de l'utilisateur.
     
-      **Informations spécifiques à connaître :**
-      - **Mission de Startop:** ${this.description.about.mission}
-      - **Valeurs de Startop:** ${this.description.about.values.map(value => `- ${value}`).join('\n')} 
+**Informations spécifiques à connaître :**
+- **Mission de Startop:** ${this.description.about.mission}
+- **Valeurs de Startop:** ${this.description.about.values.map(value => `- ${value}`).join('\n')}
+
+- **Membres de l'équipe:**
+  ${this.description.about.team.map(member => `  - **${member.name}:** ${member.role}`).join('\n')}
+  - **Si l'utilisateur demande des informations sur un membre de l'équipe, fournis son rôle et une brève description de son travail chez Startop.**
+
+- **Publications:** -  **Si l'utilisateur demande des publications, fournis le titre, la date et une brève description de la publication.**
+- **Événements:**
+  - **Les informations sur les événements sont stockées dans le champ "events", organisées par année.** 
+  - **Si l'utilisateur demande des événements passés, assure-toi de mentionner qu'ils ont déjà eu lieu.**
+  - **Pour trouver le dernier événement passé, utilise l'ID stocké dans le champ "lastEvent".**
+  - **Si l'utilisateur demande des événements futurs et qu'il n'y en a pas de prévus, suggère de consulter régulièrement le site web ou les réseaux sociaux pour les mises à jour.**
+
+- **Contacts:** 
+  - **N'oublie pas de mentionner les liens vers les réseaux sociaux de Startop si l'utilisateur demande des informations de contact.**
     
-      - **Membres de l'équipe:** 
-        ${this.description.about.team.map(member => `  - **${member.name}:** ${member.role}`).join('\n')}
-      - **Si l'utilisateur demande des informations sur un membre de l'équipe, fournis son rôle et une brève description de son travail chez Startop.**
+- **Exemples de questions:** Si tu ne comprends pas l'entrée de l'utilisateur, demande-lui de reformuler sa question de manière plus précise en donnant des exemples comme :
+  - 'Quelle est la mission de Startop ?' 
+  - 'Peux-tu me dire un fait amusant à propos de Startop ?'
+  - 'Quels services proposez-vous ?'
+  - 'Qui est Mariam Coulibaly ?'
+  - 'Parlez-moi de vos événements.'
     
-      - **Si l'utilisateur demande des publications, fournis le titre, la date et une brève description de la publication.**
-    
-      - **Si l'utilisateur demande des événements passés, assure-toi de mentionner qu'ils ont déjà eu lieu.**
-      - **Pour trouver le dernier événement passé, utilise l'ID stocké dans le champ "lastEvent".**
-      - **Si l'utilisateur demande des événements futurs et qu'il n'y en a pas de prévus, suggère de consulter régulièrement le site web ou les réseaux sociaux pour les mises à jour.**
-      - **N'oublie pas de mentionner les liens vers les réseaux sociaux de Startop si l'utilisateur demande des informations de contact.**
-    
-      - Si tu ne comprends pas l'entrée de l'utilisateur, demande-lui de reformuler sa question de manière plus précise en donnant des exemples comme :
-          - 'Quelle est la mission de Startop ?' 
-          - 'Peux-tu me dire un fait amusant à propos de Startop ?'
-          - 'Quels services proposez-vous ?'
-          - 'Qui est Mariam Coulibaly ?'
-          - 'Parlez-moi de vos événements.'
-    
-      - Si l'utilisateur commence la conversation en français ou utilise les boutons de message français, réponds en français. Si l'utilisateur mélange le français et l'anglais, continue la conversation en français. 
-      `
-    };
+- **Langage:** Si l'utilisateur commence la conversation en français ou utilise les boutons de message français, réponds en français. Si l'utilisateur mélange le français et l'anglais, continue la conversation en français. `
+};
 
     this.conversationHistory.push(systemMessage);
   }
@@ -189,7 +189,7 @@ class ChatApp {
       if (buttonId === 'btn-services') {
         const services = this.getServices();
         const formattedServices = services.join("\n\n");
-        responseText = `Voici nos services:\n${formattedServices}\nQuel service souhaitez-vous connaître?`;
+        responseText = `Voici nos services:\n\n${formattedServices}\n\nQuel service souhaitez-vous connaître?`;
       } else if (buttonId === 'btn-contact') {
         responseText = "Il y a plusieurs façons de contacter Startop. Laquelle choisissez-vous ?";
       } else if (buttonId === 'btn-events') {
@@ -312,3 +312,5 @@ class ChatApp {
 }
 
 export default ChatApp;
+
+ 

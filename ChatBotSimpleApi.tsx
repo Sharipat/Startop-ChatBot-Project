@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Icon } from '@iconify/react';
-import ChatApp, { ChatBubble } from './ChatApp';
-import Header from './components/Header';
-import Messages from './components/Messages';
-import InputArea from './components/InputArea';
-import Footer from './components/Footer';
-import styles from './styles/ChatBotStyles.module.css';
+import React, { useState, useEffect, useRef } from "react";
+import { Icon } from "@iconify/react";
+import ChatApp, { ChatBubble } from "./ChatApp";
+import Header from "./components/Header";
+import Messages from "./components/Messages";
+import InputArea from "./components/InputArea";
+import Footer from "./components/Footer";
+import styles from "./styles/ChatBotStyles.module.css";
 
 const ChatBotSimpleApi: React.FC = () => {
   const [messages, setMessages] = useState<ChatBubble[]>([]);
@@ -18,13 +18,16 @@ const ChatBotSimpleApi: React.FC = () => {
   const [showButtons, setShowButtons] = useState<boolean>(true);
   const [showServiceButtons, setShowServiceButtons] = useState<boolean>(false);
   const [showContactOptions, setShowContactOptions] = useState<boolean>(false);
-  const [showSocialPlatformOptions, setShowSocialPlatformOptions] = useState<boolean>(false);
-  const [showFollowUpButtons, setShowFollowUpButtons] = useState<boolean>(false);
+  const [showSocialPlatformOptions, setShowSocialPlatformOptions] =
+    useState<boolean>(false);
+  const [showFollowUpButtons, setShowFollowUpButtons] =
+    useState<boolean>(false);
   const [showEventOptions, setShowEventOptions] = useState<boolean>(false);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const resizeHandleRef = useRef<HTMLDivElement>(null);
+  const [greetingMessagesDisplayed, setGreetingMessagesDisplayed] = useState(0);
 
   useEffect(() => {
     const app = new ChatApp();
@@ -61,7 +64,7 @@ const ChatBotSimpleApi: React.FC = () => {
         if (chatApp) {
           const services = chatApp.getServices();
           const formattedServices = services.join("\n\n");
-          message = `Voici nos services:\n${formattedServices}\nQuel service souhaitez-vous connaître?`;
+          message = `Voici nos services: \n${formattedServices}\n Quel service souhaitez-vous connaître?`;
           setShowButtons(false);
           setShowServiceButtons(true);
         }
@@ -74,9 +77,16 @@ const ChatBotSimpleApi: React.FC = () => {
         setShowButtons(false);
         setShowEventOptions(true);
       } else if (target.id === "btn-ask-question") {
-        message = "Nous sommes heureux de vous aider! Veuillez poser votre question dans le champ de saisie ci-dessous.";
-        setShowButtons(false);
-        // Handle user question
+        message =
+          "Nous sommes heureux de vous aider! Veuillez poser votre question dans le champ de saisie ci-dessous.";
+        if (showButtons) {
+          setShowButtons(false);
+        } else if (showEventOptions) {
+          setShowEventOptions(false);
+        } else if (showFollowUpButtons) {  //  <--- Added condition for follow-up buttons
+          setShowFollowUpButtons(false);
+        
+        }
       } else if (target.dataset.service) {
         const serviceEmoji = target.dataset.service;
         if (chatApp) {
@@ -88,13 +98,9 @@ const ChatBotSimpleApi: React.FC = () => {
             const followUpMessage = "Puis-je vous aider avec autre chose?";
             const newBotMessages: ChatBubble[] = [
               { type: "response", text: message, label: "StarBot" },
-              { type: "response", text: followUpMessage, label: "StarBot" }
+              { type: "response", text: followUpMessage, label: "StarBot" },
             ];
             setMessages((prevMessages) => [...prevMessages, ...newBotMessages]);
-            // Removed: setConversationHistory((prevHistory) => [
-            //   ...prevHistory,
-            //   ...newBotMessages
-            // ]);
           }
         }
       } else if (target.dataset.contactMethod) {
@@ -108,14 +114,14 @@ const ChatBotSimpleApi: React.FC = () => {
             const contactInfo = chatApp.getContactInfo(method);
             const followUpMessage = "Puis-je vous aider avec autre chose?";
             const newBotMessages: ChatBubble[] = [
-              { type: "response", text: `Voici les informations de contact pour ${method} : ${contactInfo}.`, label: "StarBot" },
-              { type: "response", text: followUpMessage, label: "StarBot" }
+              {
+                type: "response",
+                text: `Voici les informations de contact pour ${method} : ${contactInfo}.`,
+                label: "StarBot",
+              },
+              { type: "response", text: followUpMessage, label: "StarBot" },
             ];
             setMessages((prevMessages) => [...prevMessages, ...newBotMessages]);
-            // Removed: setConversationHistory((prevHistory) => [
-            //   ...prevHistory,
-            //   ...newBotMessages
-            // ]);
             setShowContactOptions(false);
             setShowFollowUpButtons(true);
           }
@@ -126,38 +132,35 @@ const ChatBotSimpleApi: React.FC = () => {
           const link = chatApp.getSocialLink(platform);
           const followUpMessage = "Puis-je vous aider avec autre chose?";
           const newBotMessages: ChatBubble[] = [
-            { type: "response", text: `Voici le lien pour notre ${platform}: ${link}.`, label: "StarBot" },
-            { type: "response", text: followUpMessage, label: "StarBot" }
+            {
+              type: "response",
+              text: `Voici le lien pour notre ${platform}: ${link}.`,
+              label: "StarBot",
+            },
+            { type: "response", text: followUpMessage, label: "StarBot" },
           ];
           setMessages((prevMessages) => [...prevMessages, ...newBotMessages]);
-          // Removed: setConversationHistory((prevHistory) => [
-          //   ...prevHistory,
-          //   ...newBotMessages
-          // ]);
           setShowSocialPlatformOptions(false);
           setShowFollowUpButtons(true);
         }
-      } else if (target.id === "btn-prochain-event" || target.id === "btn-dernier-event") {
+      } else if (
+        target.id === "btn-prochain-event" ||
+        target.id === "btn-dernier-event"
+      ) {
         if (chatApp) {
-          const eventDetail = target.id === "btn-prochain-event"
-            ? "Le prochain évènement est le [Nom de l'évènement], le [Date]."
-            : "Le dernier évènement était [Nom de l'évènement], le [Date].";
+          const eventDetail =
+            target.id === "btn-prochain-event"
+              ? `Le prochain évènement est {}, le {}.`
+              : `Le dernier évènement était {}, le {}.`;
           const followUpMessage = "Puis-je vous aider avec autre chose?";
           const newBotMessages: ChatBubble[] = [
             { type: "response", text: eventDetail, label: "StarBot" },
-            { type: "response", text: followUpMessage, label: "StarBot" }
+            { type: "response", text: followUpMessage, label: "StarBot" },
           ];
           setMessages((prevMessages) => [...prevMessages, ...newBotMessages]);
-          // Removed: setConversationHistory((prevHistory) => [
-          //   ...prevHistory,
-          //   ...newBotMessages
-          // ]);
           setShowEventOptions(false);
           setShowFollowUpButtons(true);
         }
-      } else if (target.id === "btn-other-event") {
-        message = "Veuillez poser votre question à propos d'un autre événement.";
-        setShowEventOptions(false);
       } else if (target.id === "btn-return") {
         setShowServiceButtons(false);
         setShowContactOptions(false);
@@ -165,26 +168,16 @@ const ChatBotSimpleApi: React.FC = () => {
         setShowFollowUpButtons(false);
         setShowEventOptions(false);
         setShowButtons(true);
-      } else if (target.id === "btn-no-thanks") {
-        const newBotMessage: ChatBubble = { type: "response", text: "D'accord, si vous avez d'autres questions, n'hésitez pas à demander!", label: "StarBot" };
-        setMessages((prevMessages) => [...prevMessages, newBotMessage]);
-        // Removed: setConversationHistory((prevHistory) => [...prevHistory, newBotMessage]);
-        setShowFollowUpButtons(false);
-      } else if (target.id === "btn-yes-please") {
-        const newBotMessage: ChatBubble = { type: "response", text: "Que souhaitez-vous savoir d'autre ?", label: "StarBot" };
-        setMessages((prevMessages) => [...prevMessages, newBotMessage]);
-        // Removed: setConversationHistory((prevHistory) => [...prevHistory, newBotMessage]);
-        setShowFollowUpButtons(false);
       }
 
       if (message && chatApp) {
-        const newBotMessage: ChatBubble = { type: "response", text: message, label: "StarBot" };
+        const newBotMessage: ChatBubble = {
+          type: "response",
+          text: message,
+          label: "StarBot",
+        };
 
         setMessages((prevMessages) => [...prevMessages, newBotMessage]);
-        // Removed: setConversationHistory((prevHistory) => [
-        //   ...prevHistory,
-        //   newBotMessage,
-        // ]);
         chatApp.addToConversationHistory(newBotMessage);
       }
     };
@@ -233,25 +226,32 @@ const ChatBotSimpleApi: React.FC = () => {
       const newUserMessage: ChatBubble = { type: "question", text: inputValue };
       
       // Update UI messages and ChatApp conversation history
-      setMessages((prevMessages) => [...prevMessages, newUserMessage]); 
+      setMessages((prevMessages) => [...prevMessages, newUserMessage]);
       chatApp.addToConversationHistory(newUserMessage);
-  
+
+      setShowButtons(false);
+      setShowServiceButtons(false);
+      setShowContactOptions(false);
+      setShowSocialPlatformOptions(false);
+      setShowFollowUpButtons(false);
+      setShowEventOptions(false);
+
       setIsTyping(true); // Show typing indicator
-  
+
       // Get the response from the chatbot
-      const responseText = await chatApp.sendMessage(inputValue); 
-      
+      const responseText = await chatApp.sendMessage(inputValue);
+
       // Create a bot response ChatBubble
       const newBotMessage: ChatBubble = {
         type: "response",
         text: responseText,
-        label: "StarBot"
+        label: "StarBot",
       };
-  
+
       // Update UI messages and ChatApp conversation history
       setMessages((prevMessages) => [...prevMessages, newBotMessage]);
       chatApp.addToConversationHistory(newBotMessage);
-  
+
       setIsTyping(false); // Hide typing indicator
     }
   };
@@ -287,21 +287,31 @@ const ChatBotSimpleApi: React.FC = () => {
     if (!isGreetingShown) {
       setIsTyping(true);
       const greetingMessages: ChatBubble[] = [
-        { type: "response", text: "Bienvenue chez Startop! ", label: "StarBot" },
-        { type: "response", text: " Je suis StarBot, votre assistant virtuel.", label: "StarBot" },
-        { type: "response", text: "Comment puis-je vous aider aujourd'hui?", label: "StarBot" },
+        {
+          type: "response",
+          text: "Bienvenue chez Startop! ",
+          label: "StarBot",
+        },
+        {
+          type: "response",
+          text: " Je suis StarBot, votre assistant virtuel.",
+          label: "StarBot",
+        },
+        {
+          type: "response",
+          text: "Comment puis-je vous aider aujourd'hui?",
+          label: "StarBot",
+        },
       ];
 
       greetingMessages.forEach((msg, index) => {
         setTimeout(() => {
-          setMessages((prevMessages) => {
-            const newMessages = [...prevMessages, msg];
-            return newMessages;
-          });
+          setMessages((prevMessages) => [...prevMessages, msg]);
+          setGreetingMessagesDisplayed((prevCount) => prevCount + 1); // Increment displayed count
           if (index === greetingMessages.length - 1) {
             setIsTyping(false);
           }
-        }, index * 1000); // Adjust the delay as needed
+        }, index * 1000);
       });
 
       setIsGreetingShown(true);
@@ -310,9 +320,14 @@ const ChatBotSimpleApi: React.FC = () => {
 
   return (
     <div>
-      <style jsx>{`
+      <style jsx>
+        {`
           @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
               transform: translateY(0);
             }
             40% {
@@ -330,10 +345,7 @@ const ChatBotSimpleApi: React.FC = () => {
           <div className={styles.notificationDot}></div>
         </div>
       ) : (
-        <div
-          ref={containerRef}
-          className={styles.container}
-        >
+        <div ref={containerRef} className={styles.container}>
           {!isMinimized && (
             <div
               ref={resizeHandleRef}
@@ -346,105 +358,146 @@ const ChatBotSimpleApi: React.FC = () => {
             <>
               <Messages messages={messages} />
               <div className={styles.buttonsContainer}>
-    {showButtons && (
-      <>
-        <button id="btn-services" className={styles.chatButton}>
-          Services
-        </button>
-        <button id="btn-contact" className={styles.chatButton}>
-          Contact
-        </button>
-        <button id="btn-events" className={styles.chatButton}>
-          Évènements
-        </button>
-        <button id="btn-ask-question" className={styles.chatButton}>
-          Poser la question
-        </button>
-      </>
-    )}
-    {showServiceButtons && chatApp && (
-      <>
-        {Object.values(chatApp.description.services).map(
-          (service: any, index: number) => (
-            <button
-              key={index}
-              data-service={service.emoji}
-              className={styles.chatButton}
-            >
-              {service.emoji}
-            </button>
-          )
-        )}
-        <button id="btn-return" className={`${styles.chatButton} ${styles.chatButtonRetour}`}>
-          <Icon icon="mdi:arrow-left" width="20" height="20" />
-        </button>
-      </>
-    )}
-    {showContactOptions && (
-      <>
-        <button data-contact-method="address" className={styles.chatButton}>
-          Adresse
-        </button>
-        <button data-contact-method="phone_number" className={styles.chatButton}>
-          Cellulaire
-        </button>
-        <button data-contact-method="socials" className={styles.chatButton}>
-          Réseaux sociaux
-        </button>
-        <button id="btn-return" className={`${styles.chatButton} ${styles.chatButtonRetour}`}>
-          <Icon icon="mdi:arrow-left" width="20" height="20" />
-        </button>
-      </>
-    )}
-    {showSocialPlatformOptions && (
-      <>
-        <button data-social-platform="facebook" className={styles.chatButton}>
-          Facebook
-        </button>
-        <button data-social-platform="instagram" className={styles.chatButton}>
-          Instagram
-        </button>
-        <button data-social-platform="linkedin" className={styles.chatButton}>
-          LinkedIn
-        </button>
-        <button data-social-platform="youtube" className={styles.chatButton}>
-          YouTube
-        </button>
-        <button id="btn-return" className={`${styles.chatButton} ${styles.chatButtonRetour}`}>
-          <Icon icon="mdi:arrow-left" width="20" height="20" />
-        </button>
-      </>
-    )}
-    {showEventOptions && (
-      <>
-        <button id="btn-prochain-event" className={styles.chatButton}>
-          Prochain évènement
-        </button>
-        <button id="btn-dernier-event" className={styles.chatButton}>
-          Dernier évènement
-        </button>
-        <button id="btn-other-event" className={styles.chatButton}>
-          Autre
-        </button>
-        <button id="btn-return" className={`${styles.chatButton} ${styles.chatButtonRetour}`}>
-          <Icon icon="mdi:arrow-left" width="20" height="20" />
-        </button>
-      </>
-    )}
-    {showFollowUpButtons && (
-      <>
-        <button id="btn-no-thanks" className={styles.chatButton}>
-          Non, merci
-        </button>
-        <button id="btn-yes-please" className={styles.chatButton}>
-          Oui, SVP
-        </button>
-        <button id="btn-return" className={`${styles.chatButton} ${styles.chatButtonRetour}`}>
-          <Icon icon="mdi:arrow-left" width="20" height="20" />
-        </button>
-      </>
-    )}
-  </div>
+                {/* Conditionally render buttons based on greetingMessagesDisplayed */}
+                {greetingMessagesDisplayed === 3 && showButtons && (
+                  <>
+                    <button id="btn-services" className={styles.chatButton}>
+                      Services
+                    </button>
+                    <button id="btn-contact" className={styles.chatButton}>
+                      Contact
+                    </button>
+                    <button id="btn-events" className={styles.chatButton}>
+                      Évènements
+                    </button>
+                    <button id="btn-ask-question" className={styles.chatButton}>
+                      Poser la question
+                    </button>
+                  </>
+                )}
+                {showServiceButtons && chatApp && (
+                  <>
+                    {Object.values(chatApp.description.services).map(
+                      (service: any, index: number) => (
+                        <button
+                          key={index}
+                          data-service={service.emoji}
+                          className={styles.chatButton}
+                        >
+                          {service.emoji}
+                        </button>
+                      )
+                    )}
+                    <button
+                      id="btn-return"
+                      className={`${styles.chatButton} ${styles.chatButtonRetour}`}
+                    >
+                      <Icon icon="mdi:arrow-left" width="20" height="20" />
+                    </button>
+                  </>
+                )}
+                {showContactOptions && (
+                  <>
+                    <button
+                      data-contact-method="address"
+                      className={styles.chatButton}
+                    >
+                      Adresse
+                    </button>
+                    <button
+                      data-contact-method="phone_number"
+                      className={styles.chatButton}
+                    >
+                      Cellulaire
+                    </button>
+                    <button
+                      data-contact-method="socials"
+                      className={styles.chatButton}
+                    >
+                      Réseaux sociaux
+                    </button>
+                    <button
+                      id="btn-return"
+                      className={`${styles.chatButton} ${styles.chatButtonRetour}`}
+                    >
+                      <Icon icon="mdi:arrow-left" width="20" height="20" />
+                    </button>
+                  </>
+                )}
+                {showSocialPlatformOptions && (
+                  <>
+                    <button
+                      data-social-platform="facebook"
+                      className={styles.chatButton}
+                    >
+                      Facebook
+                    </button>
+                    <button
+                      data-social-platform="instagram"
+                      className={styles.chatButton}
+                    >
+                      Instagram
+                    </button>
+                    <button
+                      data-social-platform="linkedin"
+                      className={styles.chatButton}
+                    >
+                      LinkedIn
+                    </button>
+                    <button
+                      data-social-platform="youtube"
+                      className={styles.chatButton}
+                    >
+                      YouTube
+                    </button>
+                    <button
+                      id="btn-return"
+                      className={`${styles.chatButton} ${styles.chatButtonRetour}`}
+                    >
+                      <Icon icon="mdi:arrow-left" width="20" height="20" />
+                    </button>
+                  </>
+                )}
+                {showEventOptions && (
+                  <>
+                    <button
+                      id="btn-prochain-event"
+                      className={styles.chatButton}
+                    >
+                      Prochain évènement
+                    </button>
+                    <button
+                      id="btn-dernier-event"
+                      className={styles.chatButton}
+                    >
+                      Dernier évènement
+                    </button>
+                    <button id="btn-ask-question" className={styles.chatButton}>
+                      Poser la question
+                    </button>
+                    <button
+                      id="btn-return"
+                      className={`${styles.chatButton} ${styles.chatButtonRetour}`}
+                    >
+                      <Icon icon="mdi:arrow-left" width="20" height="20" />
+                    </button>
+                  </>
+                )}
+                {showFollowUpButtons && (
+                  <>
+                    <button id="btn-ask-question" className={styles.chatButton}>
+                      Poser la question
+                    </button>
+
+                    <button
+                      id="btn-return"
+                      className={`${styles.chatButton} ${styles.chatButtonRetour}`}
+                    >
+                      <Icon icon="mdi:arrow-left" width="20" height="20" />
+                    </button>
+                  </>
+                )}
+              </div>
               <InputArea onSendMessage={handleSendMessage} />
               <Footer />
             </>
