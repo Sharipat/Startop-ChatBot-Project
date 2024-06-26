@@ -64,7 +64,7 @@ const ChatBotSimpleApi: React.FC = () => {
         if (chatApp) {
           const services = chatApp.getServices();
           const formattedServices = services.join("\n\n");
-          message = `Voici nos services: \n${formattedServices}\n Quel service souhaitez-vous connaître?`;
+          message = `Voici nos services: \n\n${formattedServices}\n\n Quel service souhaitez-vous connaître?`;
           setShowButtons(false);
           setShowServiceButtons(true);
         }
@@ -73,7 +73,7 @@ const ChatBotSimpleApi: React.FC = () => {
         setShowButtons(false);
         setShowContactOptions(true);
       } else if (target.id === "btn-events") {
-        message = "Quel événement souhaitez-vous connaître ?";
+        message = "Quel évènement souhaitez-vous connaître ?";
         setShowButtons(false);
         setShowEventOptions(true);
       } else if (target.id === "btn-ask-question") {
@@ -92,7 +92,7 @@ const ChatBotSimpleApi: React.FC = () => {
         if (chatApp) {
           const service = chatApp.getServiceDetails(serviceEmoji);
           if (service) {
-            message = `${service.type}: ${service.description} Coût: ${service.price}`;
+            message = `${service.type}:\n\n ${service.description} \n\nCoût: ${service.price}`;
             setShowServiceButtons(false);
             setShowFollowUpButtons(true);
             const followUpMessage = "Puis-je vous aider avec autre chose?";
@@ -116,7 +116,7 @@ const ChatBotSimpleApi: React.FC = () => {
             const newBotMessages: ChatBubble[] = [
               {
                 type: "response",
-                text: `Voici les informations de contact pour ${method} : ${contactInfo}.`,
+                text: `Voici les informations de contact pour : ${contactInfo}.`,
                 label: "StarBot",
               },
               { type: "response", text: followUpMessage, label: "StarBot" },
@@ -289,12 +289,7 @@ const ChatBotSimpleApi: React.FC = () => {
       const greetingMessages: ChatBubble[] = [
         {
           type: "response",
-          text: "Bienvenue chez Startop! ",
-          label: "StarBot",
-        },
-        {
-          type: "response",
-          text: " Je suis StarBot, votre assistant virtuel.",
+          text: "Bienvenue chez Startop! Je suis StarBot, votre assistant virtuel.",
           label: "StarBot",
         },
         {
@@ -359,7 +354,7 @@ const ChatBotSimpleApi: React.FC = () => {
               <Messages messages={messages} />
               <div className={styles.buttonsContainer}>
                 {/* Conditionally render buttons based on greetingMessagesDisplayed */}
-                {greetingMessagesDisplayed === 3 && showButtons && (
+                {greetingMessagesDisplayed === 2 && showButtons && (
                   <>
                     <button id="btn-services" className={styles.chatButton}>
                       Services

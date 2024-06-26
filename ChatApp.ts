@@ -52,13 +52,13 @@ class ChatApp {
 
     const systemMessage: ChatBubble = {
       type: 'system',
-      text: `Réponds de manière amicale et invitante. Ajoute des questions de suivi pour maintenir le flux de la conversation. Date actuelle: ${currentDate}.
+      text: `Réponds de manière amicale et invitante. Date actuelle: ${currentDate}.
 
 - Tu es StarBot, l'assistant virtuel de Startop.
-      - Ta mission est d'aider les utilisateurs à en savoir plus sur Startop, ses services, ses événements, son équipe, et ses publications. 
-      - Réponds à mes questions sur les services, les événements, les membres de l'équipe, les publications et les méthodes de contact de Startop. 
-      - Fournis des réponses concises mais incluant des détails spécifiques (prix des services, dates des événements, liens vers des ressources, rôles des membres de l'équipe, descriptions des publications).
-      - Pose des questions de suivi pour guider la conversation et approfondir les besoins de l'utilisateur.
+      - Ta mission est d'aider les utilisateurs à en savoir plus sur Startop, ses services, ses évènements, son équipe, et ses publications. 
+      - Réponds à mes questions sur les services, les évènements, les membres de l'équipe, les publications et les méthodes de contact de Startop. 
+      - Fournis des réponses concises mais incluant toujours des détails spécifiques (prix des services, dates des évènements, liens vers des ressources, rôles des membres de l'équipe, descriptions des publications).
+      - Après avoir donné une brève réponse avec les detais specifiques pose des questions de suivi pour guider la conversation et approfondir les besoins de l'utilisateur.
     
 **Informations spécifiques à connaître :**
 - **Mission de Startop:** ${this.description.about.mission}
@@ -70,10 +70,10 @@ class ChatApp {
 
 - **Publications:** -  **Si l'utilisateur demande des publications, fournis le titre, la date et une brève description de la publication.**
 - **Événements:**
-  - **Les informations sur les événements sont stockées dans le champ "events", organisées par année.** 
-  - **Si l'utilisateur demande des événements passés, assure-toi de mentionner qu'ils ont déjà eu lieu.**
-  - **Pour trouver le dernier événement passé, utilise l'ID stocké dans le champ "lastEvent".**
-  - **Si l'utilisateur demande des événements futurs et qu'il n'y en a pas de prévus, suggère de consulter régulièrement le site web ou les réseaux sociaux pour les mises à jour.**
+  - **Les informations sur les évènements sont stockées dans le champ "events" de ${this.description}, organisées par année.** 
+  - **Si l'utilisateur demande des évènements passés, assure-toi de mentionner qu'ils ont déjà eu lieu avec le nom et le date de dernier évènement.**
+  - **Pour trouver le dernier évènement passé, utilise l'ID stocké dans le champ "lastEvent".**
+  - **Si l'utilisateur demande des évènements futurs et qu'il n'y en a pas de prévus, suggère de consulter régulièrement le site web ou les réseaux sociaux pour les mises à jour.**
 
 - **Contacts:** 
   - **N'oublie pas de mentionner les liens vers les réseaux sociaux de Startop si l'utilisateur demande des informations de contact.**
@@ -83,7 +83,7 @@ class ChatApp {
   - 'Peux-tu me dire un fait amusant à propos de Startop ?'
   - 'Quels services proposez-vous ?'
   - 'Qui est Mariam Coulibaly ?'
-  - 'Parlez-moi de vos événements.'
+  - 'Parlez-moi de vos évènements.'
     
 - **Langage:** Si l'utilisateur commence la conversation en français ou utilise les boutons de message français, réponds en français. Si l'utilisateur mélange le français et l'anglais, continue la conversation en français. `
 };
@@ -104,7 +104,6 @@ class ChatApp {
       console.error("Failed to load description:", err);
     }
     this.initializeConversation();
-
   }
 
   escapeString(str: string): string {
@@ -193,15 +192,15 @@ class ChatApp {
       } else if (buttonId === 'btn-contact') {
         responseText = "Il y a plusieurs façons de contacter Startop. Laquelle choisissez-vous ?";
       } else if (buttonId === 'btn-events') {
-        responseText = "Quel événement souhaitez-vous connaître ?";
+        responseText = "Quel évènement souhaitez-vous connaître ?";
       } else if (buttonId === 'btn-ask-question') {
         responseText = "Nous sommes heureux de vous aider! Veuillez poser votre question dans le champ de saisie ci-dessous.";
       } else if (buttonId === 'btn-prochain-event') {
         const nextEvent = this.findNextEvent(this.description.events);
-        responseText = nextEvent ? `Le prochain événement est ${nextEvent.title}, le ${nextEvent.longDate}.` : "Pour le moment, nous mettons la touche finale à la programmation de nos prochains événements. Je vous invite à consulter ...";
+        responseText = nextEvent ? `Le prochain évènement est ${nextEvent.title}, le ${nextEvent.longDate}.` : "Pour le moment, nous mettons la touche finale à la programmation de nos prochains évènements. Je vous invite à consulter ...";
       } else if (buttonId === 'btn-dernier-event') {
         const lastEvent = this.getLastEventDetails();
-        responseText = lastEvent ? `Le dernier événement était ${lastEvent.title}, le ${lastEvent.longDate}.` : "Il semble que nous n'ayons pas encore organisé d'événements. Restez à l'écoute pour les annonces futures!";
+        responseText = lastEvent ? `Le dernier évènement était ${lastEvent.title}, le ${lastEvent.longDate}.` : "Il semble que nous n'ayons pas encore organisé d'évènements. Restez à l'écoute pour les annonces futures!";
       } else if (buttonId.startsWith('data-service-')) {
         const serviceEmoji = buttonId.replace('data-service-', '').trim();
         const service = this.getServiceDetails(serviceEmoji);
@@ -217,7 +216,7 @@ class ChatApp {
         const link = this.getSocialLink(platform);
         responseText = link ? `Voici le lien pour notre ${platform}: ${link}.` : `Je ne trouve pas le lien pour notre ${platform} pour le moment.`;
       } else if (buttonId === 'btn-other-event') {
-        responseText = "Veuillez poser votre question à propos d'un autre événement.";
+        responseText = "Veuillez poser votre question à propos d'un autre évènement.";
       } else if (buttonId === 'btn-return') {
         responseText = "Ok, retournons à la liste principale des options.";
       } else if (buttonId === 'btn-no-thanks') {
