@@ -24,7 +24,7 @@ class ChatApp {
     this.apiUrl =
       "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent";
     this.generationConfig = {
-      temperature: 0.1,
+      temperature: 0.2,
       topP: 0.9,
       topK: 64,
       maxOutputTokens: 700,
@@ -189,6 +189,13 @@ const ChatBotSimpleApi: React.FC = () => {
   const [dataLoaded, setDataLoaded] = useState(false);
   const [showScrollButton, setShowScrollButton] = useState<boolean>(false);
   const [showButtons, setShowButtons] = useState<boolean>(true);
+  const [followUpButtons, setFollowUpButtons] = useState<{ [key: string]: string[] }>({
+    "Parlez-moi de types de services offerts": ["💼Coaching", "🌱Pivot","🏛️Soutien technique", "📈Plan d’Affaires", "🌟Adhésion"],
+    "Comment puis-je vous contacter?": ["Facebook", "Instagram", "LinkedIn"],
+    "Quels évènements sont à venir?": ["Événements cette semaine.", "Événements ce mois-ci."],
+    "Parlez-moi de membres de votre équipe.": ["Membres principaux.", "Tous les membres."],
+  });
+  const [currentFollowUp, setCurrentFollowUp] = useState<string[]>([]);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -460,13 +467,15 @@ const ChatBotSimpleApi: React.FC = () => {
       let message = "";
 
       if (target.id === "btn-services") {
-        message = "Parlez-moi de vos services.";
+        message = "Parlez-moi de types de services offerts";
       } else if (target.id === "btn-contact") {
         message = "Comment puis-je vous contacter?";
       } else if (target.id === "btn-events") {
         message = "Quels évènements sont à venir?";
       } else if (target.id === "btn-team") {
-        message = "Parlez-moi de votre équipe.";
+        message = "Parlez-moi de membres de votre équipe.";
+      } else if (target.className === "follow-up-button") {
+        message = target.innerText;
       }
 
       if (message && chatApp) {
@@ -495,6 +504,13 @@ const ChatBotSimpleApi: React.FC = () => {
           ...prevHistory,
           newBotMessage,
         ]);
+
+        // Show follow-up buttons if available
+        if (followUpButtons[message]) {
+          setCurrentFollowUp(followUpButtons[message]);
+        } else {
+          setCurrentFollowUp([]);
+        }
       }
     };
 
@@ -644,6 +660,24 @@ const ChatBotSimpleApi: React.FC = () => {
     }
   };
 
+  const renderFollowUpButtons = () => {
+    if (currentFollowUp.length === 0) return null;
+
+    return (
+      <div style={styles.buttonsContainer}>
+        {currentFollowUp.map((btnText, index) => (
+          <button
+            key={index}
+            className="follow-up-button"
+            style={styles.chatButton}
+          >
+            {btnText}
+          </button>
+        ))}
+      </div>
+    );
+  };
+
   return (
     <div>
       <style>
@@ -747,6 +781,7 @@ const ChatBotSimpleApi: React.FC = () => {
                   </button>
                 </div>
               )}
+              {renderFollowUpButtons()}
               <div style={styles.inputContainer}>
                 <input
                   type="text"

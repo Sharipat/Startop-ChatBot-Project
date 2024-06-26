@@ -83,7 +83,7 @@ const ChatBotSimpleApi: React.FC = () => {
           setShowButtons(false);
         } else if (showEventOptions) {
           setShowEventOptions(false);
-        } else if (showFollowUpButtons) {  //  <--- Added condition for follow-up buttons
+        } else if (showFollowUpButtons) {  
           setShowFollowUpButtons(false);
         
         }
