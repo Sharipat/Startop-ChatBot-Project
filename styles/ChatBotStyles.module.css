@@ -83,10 +83,12 @@
   flex: 1;
   overflow-y: auto;
   display: flex;
-  max-height: calc(70% - 50px); /* Adjust height to accommodate buttons */
+  max-height: calc(70% - 50px);
+  /* Adjust height to accommodate buttons */
   flex-direction: column;
   padding-right: 15px;
-  padding-bottom: 60px; /* Add padding to avoid overlap with buttons */
+  padding-bottom: 60px;
+  /* Add padding to avoid overlap with buttons */
 }
 
 
@@ -226,7 +228,7 @@
 }
 
 .chatButtonRetour {
-  width: 100%;
+  width: 15%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -239,6 +241,7 @@
 .chatButtonRetour:hover {
   background-color: #f0f0f0;
 }
+
 .iconButton {
   margin: 5px;
   padding: 10px 15px;
@@ -288,6 +291,7 @@
   color: #1a73e8;
   text-decoration: none;
 }
+
 .eventList {
   list-style-type: none;
   padding: 0;
