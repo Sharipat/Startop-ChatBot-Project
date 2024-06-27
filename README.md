@@ -115,6 +115,9 @@ The `description-eng.json` file should contain the following structure:
 - "Quel est le processus pour s'inscrire au programme Pivot en économie sociale?"
 - "Dis-moi un truc aléatoire sur Startop"
 
+**Example of Usage:**
+
+<img src='./public/Starbot-example.gif' alt="Starbot" width="381" height="216"/>
 
 ## Customization
 
