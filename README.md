@@ -1,4 +1,4 @@
-# ChatBotSimpleApi
+# StarBot Chatbot Widget
 
 ## Overview
 
@@ -7,11 +7,15 @@
 ## Features
 
 - **Interactive Chat Interface:** Allows users to send messages and receive responses from the chatbot.
-- **Default Minimized State:** The chat widget starts in a minimized state, showing only a notification dot.
+- **AI-Powered Responses:** Supports both free-text inputs and predefined message buttons.
+- **Conversation History:** Enhances user experience by making interactions feel more personalized and coherent.
 - **Scroll-to-Bottom Button:** A button to quickly scroll to the latest message.
 - **Resizable Chat Window:** Users can resize the chat window using the resize handle.
 - **Markdown Rendering:** Supports rendering messages with Markdown.
 - **Minimize Button:** A round button to minimize the chat widget, placed at the bottom of the chat window.
+- **Predefined Message Buttons:** Gemini processes these inputs to provide accurate and helpful answers.
+- **Follow-Up Buttons:** After an initial response, follow-up buttons offer related queries to guide users through more detailed interactions.
+
 
 ## Prerequisites
 
@@ -24,7 +28,6 @@
 
    ```sh
    git clone https://github.com/Sharipat/Startop-Chatbot-Project.git
-   cd ChatBotSimpleApi
    ```
 
 2. **Install Dependencies:**
@@ -59,9 +62,8 @@ The `ChatBotSimpleApi` component is the main chatbot interface. It handles fetch
 
 ### Key Files
 
-- `ChatBotSimpleApi.tsx`: Main React component for the chatbot.
+- `index.tsx`: Main React components for the chatbot.
 - `description-eng.json`: JSON file containing the description data for Startop.
-- `public/logo_startop.png`: Logo image used in the chat header.
 
 ## Configuration
 
@@ -105,6 +107,15 @@ The `description-eng.json` file should contain the following structure:
 }
 ```
 
+## User Interaction Example
+
+**Example Questions:**
+- "Quelle était la date du dernier évènement Startop?"
+- "Quels sont les sujets traités dans les publications de Cindy Tinh?"
+- "Quel est le processus pour s'inscrire au programme Pivot en économie sociale?"
+- "Dis-moi un truc aléatoire sur Startop"
+
+
 ## Customization
 
 ### Styles
@@ -132,7 +143,7 @@ const [isMinimized, setIsMinimized] = useState<boolean>(true);
 
 ### Adding Features
 
-You can add new features or modify existing ones by updating the component logic in `ChatBotSimpleApi.tsx`. For example, to add new buttons or change the layout, update the JSX structure within the `return` statement.
+You can add new features or modify existing ones by updating the component logic in `ChatBotSimpleApi`. For example, to add new buttons or change the layout, update the JSX structure within the `return` statement.
 
 
 ## License

@@ -10,7 +10,7 @@ interface ChatBubble {
   label?: string; // Add label property
 }
 
-// ChatApp class definition
+// ChatApp class definition  
 class ChatApp {
   description: any;
   apiKey: string;
@@ -356,7 +356,7 @@ const ChatBotSimpleApi: React.FC = () => {
     scrollButton: {
       position: "absolute",
       left: "50%",
-      bottom: "25%",
+      bottom: "40%",
       transform: "translateX(-50%)",
       backgroundColor: "#f9f9f8",
       border: "none",
@@ -831,4 +831,4 @@ const ChatBotSimpleApi: React.FC = () => {
 
 export default ChatBotSimpleApi;
 
-//index.tsx 26/06/2024
+//index.tsx 27/06/2024
